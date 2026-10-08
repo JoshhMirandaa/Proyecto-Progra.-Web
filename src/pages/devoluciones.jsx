@@ -6,45 +6,90 @@ const Devoluciones = () => {
     return db.solicitudes.filter(solicitud => solicitud.estado === 'en_prestamo');
   });
 
-  // Estado para controlar qué préstamo se está devolviendo
   const [prestamoSeleccionado, setPrestamoSeleccionado] = useState(null);
   const [mostrarModal, setMostrarModal] = useState(false);
 
-  // Estados para el formulario de devolución
   const [estadoRetorno, setEstadoRetorno] = useState('Buen estado');
   const [observaciones, setObservaciones] = useState('');
+  
+  // Nuevos estados para manejar el retraso calculado
+  const [diasRetraso, setDiasRetraso] = useState(0);
+  const [penalidad, setPenalidad] = useState(0);
 
-  // Función para abrir el modal
+  // Función para calcular días entre la fecha pactada y hoy
+  const calcularRetraso = (fechaFin) => {
+    const fechaPactada = new Date(fechaFin);
+    const fechaHoy = new Date(); // Toma la fecha actual del sistema
+    
+    // Restamos las fechas (el resultado da en milisegundos)
+    const diferenciaMilisegundos = fechaHoy.getTime() - fechaPactada.getTime();
+    
+    // Convertimos de milisegundos a días usando Math.ceil para redondear hacia arriba
+    const diferenciaDias = Math.ceil(diferenciaMilisegundos / (1000 * 60 * 60 * 24));
+    
+    return diferenciaDias > 0 ? diferenciaDias : 0;
+  };
+
   const abrirModalDevolucion = (prestamo) => {
     setPrestamoSeleccionado(prestamo);
+    
+    // Calculamos el retraso al abrir el modal
+    const retraso = calcularRetraso(prestamo.fechaFin);
+    setDiasRetraso(retraso);
+    // Simulamos que la penalidad son 5 soles por cada día de retraso
+    setPenalidad(retraso * 5); 
+
     setMostrarModal(true);
   };
 
-  // Función para cerrar el modal y limpiar el formulario
   const cerrarModal = () => {
     setMostrarModal(false);
     setPrestamoSeleccionado(null);
     setEstadoRetorno('Buen estado');
     setObservaciones('');
+    setDiasRetraso(0);
+    setPenalidad(0);
   };
 
-  // Función para simular el guardado de la devolución
   const procesarDevolucion = (e) => {
-    e.preventDefault(); // Evita que la página se recargue
+    e.preventDefault();
 
-    // Aquí (en la semana 9) simularemos que se actualiza el JSON.
-    // En la semana 15, aquí harás el fetch() hacia tu backend (Node.js).
-    
-    // Filtramos la tabla para quitar el préstamo que acabamos de devolver
     const nuevosPrestamos = prestamosActivos.filter(
       p => p.id !== prestamoSeleccionado.id
     );
     setPrestamosActivos(nuevosPrestamos);
     
-    // Requisito: "Toda operación de escritura notifica su resultado"
-    alert(`Devolución registrada exitosamente. Estado: ${estadoRetorno}`);
+    alert(`Devolución completada. Estado: ${estadoRetorno}. Retraso: ${diasRetraso} días. Penalidad: S/ ${penalidad}`);
     cerrarModal();
   };
+
+  //----------------------------------------------
+  const procesarRenovacion = (prestamo) => {
+    
+    const equipo = db.equipos.find(eq => eq.id === prestamo.equipoId);
+
+    if (!equipo) {
+      alert("Error: No se encontró el equipo.");
+      return;
+    }
+
+    
+    if (equipo.admiteRenovacion === false) {
+      
+      alert(`No se puede renovar. El equipo "${equipo.nombre}" no admite renovaciones.`);
+      return;
+    }
+
+    
+    const confirmar = window.confirm(`¿Deseas renovar el préstamo del equipo ${equipo.nombre}?`);
+    
+    if (confirmar) {
+      alert("Renovación exitosa. Se extendió el tiempo del préstamo.");
+      
+    }
+  };
+
+
 
   return (
     <div style={{ padding: '20px', fontFamily: 'sans-serif' }}>
@@ -75,7 +120,12 @@ const Devoluciones = () => {
                   <button onClick={() => abrirModalDevolucion(prestamo)}>
                     Registrar Devolución
                   </button>
-                  <button style={{ marginLeft: '10px' }}>Renovar</button>
+                  <button 
+                    style={{ marginLeft: '10px' }} 
+                    onClick={() => procesarRenovacion(prestamo)}
+                  >
+                    Renovar
+                  </button>
                 </td>
               </tr>
             ))}
@@ -83,12 +133,16 @@ const Devoluciones = () => {
         </table>
       )}
 
-      {/* --- MODAL DE DEVOLUCIÓN --- */}
       {mostrarModal && (
         <div style={modalOverlayStyle}>
           <div style={modalContentStyle}>
             <h3>Registrar Devolución - {prestamoSeleccionado?.id}</h3>
             
+            <div style={{ backgroundColor: '#fff3cd', padding: '10px', marginBottom: '15px', borderRadius: '5px' }}>
+              <strong>Días de retraso:</strong> {diasRetraso} <br/>
+              <strong>Penalidad generada:</strong> S/ {penalidad}
+            </div>
+
             <form onSubmit={procesarDevolucion}>
               <div style={{ marginBottom: '15px' }}>
                 <label>Estado en que retorna:</label>
@@ -128,7 +182,6 @@ const Devoluciones = () => {
   );
 };
 
-// Estilos básicos para simular un modal flotante
 const modalOverlayStyle = {
   position: 'fixed', top: 0, left: 0, right: 0, bottom: 0,
   backgroundColor: 'rgba(0,0,0,0.5)',
