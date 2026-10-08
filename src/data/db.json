@@ -1,0 +1,66 @@
+{
+  "usuarios": [
+    {
+      "id": 1,
+      "rol": "estudiante",
+      "nombres": "Ana",
+      "apellidos": "García",
+      "correo": "alumno1@ulima.edu.pe",
+      "carrera": "Ingeniería de Sistemas",
+      "ciclo": 6,
+      "deudaPendiente": false
+    },
+    {
+      "id": 2,
+      "rol": "encargado",
+      "nombres": "Carlos",
+      "apellidos": "Pérez",
+      "correo": "alumno2@ulima.edu.pe",
+      "almacenAsignado": "Laboratorio Central"
+    }
+  ],
+  "equipos": [
+    {
+      "id": "EQ-001",
+      "nombre": "Osciloscopio Tektronix",
+      "modelo": "TBS1052B",
+      "marca": "Tektronix",
+      "categoria": "Medición",
+      "descripcion": "Osciloscopio digital de 2 canales, 50 MHz.",
+      "fotografias": ["url_foto_1.jpg"],
+      "accesoriosIncluidos": ["2 Puntas de prueba", "Cable de poder"],
+      "duracionMaximaDias": 3,
+      "requiereAutorizacion": true,
+      "admiteRenovacion": false
+    }
+  ],
+  "unidades": [
+    {
+      "id": "U-001",
+      "equipoId": "EQ-001",
+      "codigoInventario": "INV-OSC-01",
+      "ubicacion": "Estante A1",
+      "estado": "disponible",
+      "observaciones": "Pantalla con un ligero raspón."
+    }
+  ],
+  "solicitudes": [
+    {
+      "id": "SOL-001",
+      "estudianteId": 1,
+      "equipoId": "EQ-001",
+      "unidadId": null,
+      "fechaInicio": "2026-10-10",
+      "fechaFin": "2026-10-12",
+      "motivo": "Laboratorio de Física 3",
+      "curso": "Física 3",
+      "estado": "en_prestamo",
+      "motivoRechazo": "",
+      "accesoriosEntregados": ["2 Puntas de prueba"],
+      "fechaEntregaReal": "2026-10-10",
+      "fechaDevolucionReal": null,
+      "estadoDevolucion": "",
+      "penalidadDias": 0
+    }
+  ]
+}
