@@ -25,15 +25,13 @@ export function NotificacionProvider({ children }) {
     [cerrar],
   )
 
+  const exito = useCallback((mensaje) => notificar('exito', mensaje), [notificar])
+  const error = useCallback((mensaje) => notificar('error', mensaje), [notificar])
+  const aviso = useCallback((mensaje) => notificar('aviso', mensaje), [notificar])
+
   const valor = useMemo(
-    () => ({
-      avisos,
-      cerrar,
-      exito: (mensaje) => notificar('exito', mensaje),
-      error: (mensaje) => notificar('error', mensaje),
-      aviso: (mensaje) => notificar('aviso', mensaje),
-    }),
-    [avisos, cerrar, notificar],
+    () => ({ avisos, cerrar, exito, error, aviso }),
+    [avisos, cerrar, exito, error, aviso],
   )
 
   return <NotificacionContext.Provider value={valor}>{children}</NotificacionContext.Provider>
