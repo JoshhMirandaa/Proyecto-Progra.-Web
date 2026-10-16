@@ -1,0 +1,1102 @@
+{
+  "_meta": {
+    "descripcion": "Datos semilla de la HU-2 (Inventario), según los mockups 2.1 a 2.6 del Tema 7. Cubre los casos límite acordados: equipo en borrador y sin unidades, equipo con todas las unidades dadas de baja, equipo sin unidades libres, unidades con historial de varios cambios y unidades con observaciones vacías.",
+    "version": "2.0.0",
+    "generadoEn": "2026-09-14T08:05:00.000Z"
+  },
+  "usuarios": [
+    {
+      "id": "US-101",
+      "nombres": "Elena",
+      "apellidos": "Rivas",
+      "correo": "erivas@ulima.edu.pe",
+      "rol": "encargado",
+      "almacenAsignado": "Almacén H-102"
+    },
+    {
+      "id": "US-102",
+      "nombres": "Martín",
+      "apellidos": "Quiroga",
+      "correo": "mquiroga@ulima.edu.pe",
+      "rol": "encargado",
+      "almacenAsignado": "Almacén H-102"
+    },
+    {
+      "id": "US-201",
+      "nombres": "Renzo",
+      "apellidos": "Mendoza",
+      "correo": "rmendoza@ulima.edu.pe",
+      "rol": "estudiante"
+    }
+  ],
+  "contadoresExternos": {
+    "solicitudes": 12,
+    "vencidos": 2,
+    "devoluciones": 0,
+    "reservas": 5,
+    "listaEspera": 6,
+    "usuarios": 15
+  },
+  "equipos": [
+    {
+      "id": "EQ-001",
+      "nombre": "Osciloscopio TBS1052B",
+      "marca": "Tektronix",
+      "modelo": "TBS1052B",
+      "categoria": "medicion",
+      "descripcion": "Osciloscopio digital de dos canales y 50 MHz de ancho de banda, para las prácticas de circuitos analógicos y digitales. Se entrega con dos sondas pasivas y el cable de poder.",
+      "fotografias": [
+        {
+          "url": "https://picsum.photos/seed/osc-tek-1/900/900",
+          "alt": "Osciloscopio visto de frente"
+        },
+        {
+          "url": "https://picsum.photos/seed/osc-tek-2/900/900",
+          "alt": "Panel de controles del osciloscopio"
+        },
+        {
+          "url": "https://picsum.photos/seed/osc-tek-3/900/900",
+          "alt": "Sondas y accesorios del equipo"
+        }
+      ],
+      "accesorios": [
+        "Sonda pasiva 1X/10X (x2)",
+        "Cable de poder",
+        "Guía rápida impresa"
+      ],
+      "condicionesPrestamo": {
+        "duracionMaximaDias": 7,
+        "requiereAutorizacion": true,
+        "admiteRenovacion": false,
+        "penalidadPorDia": 15
+      },
+      "esBorrador": false,
+      "creadoEn": "2026-03-02T10:15:00.000Z",
+      "actualizadoEn": "2026-09-14T08:05:00.000Z"
+    },
+    {
+      "id": "EQ-002",
+      "nombre": "Cámara Canon EOS 90D",
+      "marca": "Canon",
+      "modelo": "EOS 90D",
+      "categoria": "audiovisual",
+      "descripcion": "Cámara réflex digital de 32.5 MP con grabación 4K, para los proyectos de fotografía y video de los cursos de Comunicación e Ingeniería Industrial. Se entrega con lente 18-135 mm montado y batería cargada.",
+      "fotografias": [
+        {
+          "url": "https://picsum.photos/seed/cam-can-1/900/900",
+          "alt": "Cámara con el lente montado"
+        },
+        {
+          "url": "https://picsum.photos/seed/cam-can-2/900/900",
+          "alt": "Pantalla posterior de la cámara"
+        },
+        {
+          "url": "https://picsum.photos/seed/cam-can-3/900/900",
+          "alt": "Estuche con los accesorios"
+        }
+      ],
+      "accesorios": [
+        "Estuche rígido",
+        "Cargador",
+        "Batería de repuesto",
+        "Correa",
+        "Cable USB"
+      ],
+      "condicionesPrestamo": {
+        "duracionMaximaDias": 5,
+        "requiereAutorizacion": false,
+        "admiteRenovacion": true,
+        "penalidadPorDia": 20
+      },
+      "esBorrador": false,
+      "creadoEn": "2026-03-05T15:00:00.000Z",
+      "actualizadoEn": "2026-09-12T11:25:00.000Z"
+    },
+    {
+      "id": "EQ-003",
+      "nombre": "Kit de robótica Arduino Mega",
+      "marca": "Arduino",
+      "modelo": "Mega 2560",
+      "categoria": "robotica",
+      "descripcion": "Kit de prototipado con placa Mega 2560, sensores, actuadores y componentes pasivos. Pensado para los trabajos de todo el ciclo, por eso admite préstamos largos.",
+      "fotografias": [
+        {
+          "url": "https://picsum.photos/seed/rob-ard-1/900/900",
+          "alt": "Componentes del kit ordenados en su caja"
+        }
+      ],
+      "accesorios": [
+        "Placa Mega 2560",
+        "Protoboard 830 puntos",
+        "Juego de cables Dupont",
+        "Servomotor SG90 (x2)",
+        "Sensor ultrasónico HC-SR04",
+        "Cable USB tipo B"
+      ],
+      "condicionesPrestamo": {
+        "duracionMaximaDias": 30,
+        "requiereAutorizacion": false,
+        "admiteRenovacion": true,
+        "penalidadPorDia": 5
+      },
+      "esBorrador": false,
+      "creadoEn": "2026-03-10T08:20:00.000Z",
+      "actualizadoEn": "2026-08-30T10:00:00.000Z"
+    },
+    {
+      "id": "EQ-004",
+      "nombre": "Tableta gráfica Wacom Intuos",
+      "marca": "Wacom",
+      "modelo": "CTL-4100",
+      "categoria": "computo",
+      "descripcion": "Tableta gráfica de tamaño mediano con lápiz sin batería, para los cursos de diseño y modelado.",
+      "fotografias": [
+        {
+          "url": "https://picsum.photos/seed/tab-wac-1/900/900",
+          "alt": "Tableta gráfica con su lápiz"
+        }
+      ],
+      "accesorios": [
+        "Lápiz sin batería",
+        "Cable USB",
+        "Puntas de repuesto"
+      ],
+      "condicionesPrestamo": {
+        "duracionMaximaDias": 14,
+        "requiereAutorizacion": false,
+        "admiteRenovacion": true,
+        "penalidadPorDia": 8
+      },
+      "esBorrador": false,
+      "creadoEn": "2026-03-18T13:40:00.000Z",
+      "actualizadoEn": "2026-09-23T10:40:00.000Z"
+    },
+    {
+      "id": "EQ-005",
+      "nombre": "Multímetro Fluke 117",
+      "marca": "Fluke",
+      "modelo": "117",
+      "categoria": "medicion",
+      "descripcion": "Multímetro digital con detección de tensión sin contacto y medición de verdadero valor eficaz. Instrumento de uso general del laboratorio de electrónica.",
+      "fotografias": [
+        {
+          "url": "https://picsum.photos/seed/mul-flu-1/900/900",
+          "alt": "Multímetro digital con sus puntas"
+        }
+      ],
+      "accesorios": [
+        "Juego de puntas de prueba",
+        "Estuche de transporte"
+      ],
+      "condicionesPrestamo": {
+        "duracionMaximaDias": 10,
+        "requiereAutorizacion": false,
+        "admiteRenovacion": true,
+        "penalidadPorDia": 10
+      },
+      "esBorrador": false,
+      "creadoEn": "2026-03-20T09:50:00.000Z",
+      "actualizadoEn": "2026-10-01T08:15:00.000Z"
+    },
+    {
+      "id": "EQ-006",
+      "nombre": "Analizador de redes portátil",
+      "marca": "NetAlly",
+      "modelo": "LinkRunner AT 2000",
+      "categoria": "redes",
+      "descripcion": "Verificador de cableado y certificación básica de enlaces Ethernet. Para las prácticas del curso de Redes y Comunicaciones.",
+      "fotografias": [
+        {
+          "url": "https://picsum.photos/seed/red-net-1/900/900",
+          "alt": "Analizador de redes portátil"
+        }
+      ],
+      "accesorios": [
+        "Estuche rígido",
+        "Cargador y cable de red",
+        "Batería de repuesto"
+      ],
+      "condicionesPrestamo": {
+        "duracionMaximaDias": 4,
+        "requiereAutorizacion": true,
+        "admiteRenovacion": false,
+        "penalidadPorDia": 25
+      },
+      "esBorrador": false,
+      "creadoEn": "2026-04-02T09:00:00.000Z",
+      "actualizadoEn": "2026-09-08T16:30:00.000Z"
+    },
+    {
+      "id": "EQ-007",
+      "nombre": "Trípode profesional Manfrotto",
+      "marca": "Manfrotto",
+      "modelo": "MT055",
+      "categoria": "audiovisual",
+      "descripcion": "Trípode de aluminio con columna central horizontal y rótula de bola, para grabación en estudio y exteriores.",
+      "fotografias": [
+        {
+          "url": "https://picsum.photos/seed/tri-man-1/900/900",
+          "alt": "Trípode extendido"
+        }
+      ],
+      "accesorios": [
+        "Rótula de bola",
+        "Placa rápida",
+        "Funda de transporte"
+      ],
+      "condicionesPrestamo": {
+        "duracionMaximaDias": 7,
+        "requiereAutorizacion": false,
+        "admiteRenovacion": true,
+        "penalidadPorDia": 6
+      },
+      "esBorrador": false,
+      "creadoEn": "2026-04-10T11:00:00.000Z",
+      "actualizadoEn": "2026-09-20T09:00:00.000Z"
+    },
+    {
+      "id": "EQ-008",
+      "nombre": "Fuente de poder regulable",
+      "marca": "Korad",
+      "modelo": "KA3005P",
+      "categoria": "lab-fisica",
+      "descripcion": "Fuente de corriente continua regulable de 0 a 30 V y 0 a 5 A, con control por computadora.",
+      "fotografias": [
+        {
+          "url": "https://picsum.photos/seed/fue-kor-1/900/900",
+          "alt": "Fuente de poder regulable"
+        }
+      ],
+      "accesorios": [
+        "Cable de poder",
+        "Juego de cables banana-banana"
+      ],
+      "condicionesPrestamo": {
+        "duracionMaximaDias": 7,
+        "requiereAutorizacion": false,
+        "admiteRenovacion": false,
+        "penalidadPorDia": 12
+      },
+      "esBorrador": false,
+      "creadoEn": "2026-04-12T14:10:00.000Z",
+      "actualizadoEn": "2026-09-26T12:00:00.000Z"
+    },
+    {
+      "id": "EQ-009",
+      "nombre": "Kit de robótica modular SPIKE",
+      "marca": "LEGO Education",
+      "modelo": "SPIKE Prime",
+      "categoria": "robotica",
+      "descripcion": "Kit recién adquirido. Está guardado como borrador hasta que se inventaríen las unidades del lote.",
+      "fotografias": [],
+      "accesorios": [
+        "Hub programable",
+        "Motores medianos (x3)",
+        "Sensor de color",
+        "Sensor de fuerza"
+      ],
+      "condicionesPrestamo": {
+        "duracionMaximaDias": 14,
+        "requiereAutorizacion": false,
+        "admiteRenovacion": true,
+        "penalidadPorDia": 0
+      },
+      "esBorrador": true,
+      "creadoEn": "2026-09-28T16:00:00.000Z",
+      "actualizadoEn": "2026-09-28T16:00:00.000Z"
+    },
+    {
+      "id": "EQ-010",
+      "nombre": "Proyector portátil",
+      "marca": "Epson",
+      "modelo": "EF-12",
+      "categoria": "audiovisual",
+      "descripcion": "Proyector láser compacto. Las dos unidades están dadas de baja, por eso el equipo no aparece en el catálogo.",
+      "fotografias": [
+        {
+          "url": "https://picsum.photos/seed/pry-eps-1/900/900",
+          "alt": "Proyector portátil"
+        }
+      ],
+      "accesorios": [
+        "Control remoto",
+        "Cable HDMI",
+        "Fuente de poder"
+      ],
+      "condicionesPrestamo": {
+        "duracionMaximaDias": 3,
+        "requiereAutorizacion": true,
+        "admiteRenovacion": false,
+        "penalidadPorDia": 30
+      },
+      "esBorrador": false,
+      "creadoEn": "2026-04-20T10:00:00.000Z",
+      "actualizadoEn": "2026-08-05T15:00:00.000Z"
+    }
+  ],
+  "unidades": [
+    {
+      "id": "UN-0001",
+      "equipoId": "EQ-001",
+      "codigoInventario": "INV-OSC-0042",
+      "ubicacion": "Almacén H-102 · anaquel 3",
+      "observaciones": "Sondas completas",
+      "estado": "disponible",
+      "prestamoVigente": null,
+      "historialEstados": [
+        {
+          "de": null,
+          "a": "disponible",
+          "motivo": "Alta de la unidad en el inventario.",
+          "fecha": "2026-03-02T10:20:00.000Z",
+          "usuarioId": "US-101"
+        }
+      ]
+    },
+    {
+      "id": "UN-0002",
+      "equipoId": "EQ-001",
+      "codigoInventario": "INV-OSC-0043",
+      "ubicacion": "Almacén H-102 · anaquel 3",
+      "observaciones": "",
+      "estado": "disponible",
+      "prestamoVigente": null,
+      "historialEstados": [
+        {
+          "de": null,
+          "a": "disponible",
+          "motivo": "Alta de la unidad en el inventario.",
+          "fecha": "2026-03-02T10:20:00.000Z",
+          "usuarioId": "US-101"
+        }
+      ]
+    },
+    {
+      "id": "UN-0003",
+      "equipoId": "EQ-001",
+      "codigoInventario": "INV-OSC-0044",
+      "ubicacion": "Lab. Electrónica H-210",
+      "observaciones": "Entregada con estuche",
+      "estado": "prestada",
+      "prestamoVigente": "PRE-2026-0318",
+      "historialEstados": [
+        {
+          "de": null,
+          "a": "disponible",
+          "motivo": "Alta de la unidad en el inventario.",
+          "fecha": "2026-03-02T10:20:00.000Z",
+          "usuarioId": "US-101"
+        },
+        {
+          "de": "disponible",
+          "a": "prestada",
+          "motivo": "Entrega del préstamo PRE-2026-0318.",
+          "fecha": "2026-09-14T08:05:00.000Z",
+          "usuarioId": "US-101"
+        }
+      ]
+    },
+    {
+      "id": "UN-0004",
+      "equipoId": "EQ-001",
+      "codigoInventario": "INV-OSC-0045",
+      "ubicacion": "Servicio técnico externo",
+      "observaciones": "Sonda 2 con falso contacto",
+      "estado": "mantenimiento",
+      "prestamoVigente": null,
+      "historialEstados": [
+        {
+          "de": null,
+          "a": "disponible",
+          "motivo": "Alta de la unidad en el inventario.",
+          "fecha": "2026-03-02T10:20:00.000Z",
+          "usuarioId": "US-101"
+        },
+        {
+          "de": "disponible",
+          "a": "mantenimiento",
+          "motivo": "Sonda 2 con falso contacto; enviada al servicio técnico.",
+          "fecha": "2026-09-05T08:00:00.000Z",
+          "usuarioId": "US-102"
+        }
+      ]
+    },
+    {
+      "id": "UN-0005",
+      "equipoId": "EQ-001",
+      "codigoInventario": "INV-OSC-0046",
+      "ubicacion": "Almacén N-005",
+      "observaciones": "",
+      "estado": "disponible",
+      "prestamoVigente": null,
+      "historialEstados": [
+        {
+          "de": null,
+          "a": "disponible",
+          "motivo": "Alta de la unidad en el inventario.",
+          "fecha": "2026-03-02T10:20:00.000Z",
+          "usuarioId": "US-101"
+        },
+        {
+          "de": "disponible",
+          "a": "prestada",
+          "motivo": "Entrega del préstamo PRE-2026-0244.",
+          "fecha": "2026-07-01T09:00:00.000Z",
+          "usuarioId": "US-101"
+        },
+        {
+          "de": "prestada",
+          "a": "mantenimiento",
+          "motivo": "Devuelta con la perilla de escala floja.",
+          "fecha": "2026-07-20T10:30:00.000Z",
+          "usuarioId": "US-101"
+        },
+        {
+          "de": "mantenimiento",
+          "a": "disponible",
+          "motivo": "Perilla reemplazada y equipo verificado.",
+          "fecha": "2026-08-06T16:10:00.000Z",
+          "usuarioId": "US-102"
+        }
+      ]
+    },
+    {
+      "id": "UN-0006",
+      "equipoId": "EQ-002",
+      "codigoInventario": "INV-CAM-0009",
+      "ubicacion": "Almacén H-102 · vitrina",
+      "observaciones": "",
+      "estado": "disponible",
+      "prestamoVigente": null,
+      "historialEstados": [
+        {
+          "de": null,
+          "a": "disponible",
+          "motivo": "Alta de la unidad en el inventario.",
+          "fecha": "2026-03-05T15:10:00.000Z",
+          "usuarioId": "US-101"
+        }
+      ]
+    },
+    {
+      "id": "UN-0007",
+      "equipoId": "EQ-002",
+      "codigoInventario": "INV-CAM-0010",
+      "ubicacion": "Almacén H-102 · vitrina",
+      "observaciones": "Falta la tapa del lente; se entrega con una genérica.",
+      "estado": "disponible",
+      "prestamoVigente": null,
+      "historialEstados": [
+        {
+          "de": null,
+          "a": "disponible",
+          "motivo": "Alta de la unidad en el inventario.",
+          "fecha": "2026-03-05T15:11:00.000Z",
+          "usuarioId": "US-101"
+        }
+      ]
+    },
+    {
+      "id": "UN-0008",
+      "equipoId": "EQ-002",
+      "codigoInventario": "INV-CAM-0011",
+      "ubicacion": "Servicio técnico externo",
+      "observaciones": "Lente con hongos.",
+      "estado": "mantenimiento",
+      "prestamoVigente": null,
+      "historialEstados": [
+        {
+          "de": null,
+          "a": "disponible",
+          "motivo": "Alta de la unidad en el inventario.",
+          "fecha": "2026-03-05T15:12:00.000Z",
+          "usuarioId": "US-101"
+        },
+        {
+          "de": "disponible",
+          "a": "mantenimiento",
+          "motivo": "Lente con hongos; enviada al servicio técnico autorizado.",
+          "fecha": "2026-09-12T11:25:00.000Z",
+          "usuarioId": "US-101"
+        }
+      ]
+    },
+    {
+      "id": "UN-0009",
+      "equipoId": "EQ-002",
+      "codigoInventario": "INV-CAM-0012",
+      "ubicacion": "Lab. Electrónica H-210",
+      "observaciones": "",
+      "estado": "prestada",
+      "prestamoVigente": "PRE-2026-0321",
+      "historialEstados": [
+        {
+          "de": null,
+          "a": "disponible",
+          "motivo": "Alta de la unidad en el inventario.",
+          "fecha": "2026-03-05T15:13:00.000Z",
+          "usuarioId": "US-101"
+        },
+        {
+          "de": "disponible",
+          "a": "prestada",
+          "motivo": "Entrega del préstamo PRE-2026-0321.",
+          "fecha": "2026-09-16T09:30:00.000Z",
+          "usuarioId": "US-101"
+        }
+      ]
+    },
+    {
+      "id": "UN-0010",
+      "equipoId": "EQ-003",
+      "codigoInventario": "INV-ROB-0001",
+      "ubicacion": "Almacén H-102 · anaquel 1",
+      "observaciones": "",
+      "estado": "disponible",
+      "prestamoVigente": null,
+      "historialEstados": [
+        {
+          "de": null,
+          "a": "disponible",
+          "motivo": "Alta de la unidad en el inventario.",
+          "fecha": "2026-03-10T08:25:00.000Z",
+          "usuarioId": "US-101"
+        }
+      ]
+    },
+    {
+      "id": "UN-0011",
+      "equipoId": "EQ-003",
+      "codigoInventario": "INV-ROB-0002",
+      "ubicacion": "Almacén H-102 · anaquel 1",
+      "observaciones": "",
+      "estado": "disponible",
+      "prestamoVigente": null,
+      "historialEstados": [
+        {
+          "de": null,
+          "a": "disponible",
+          "motivo": "Alta de la unidad en el inventario.",
+          "fecha": "2026-03-10T08:25:00.000Z",
+          "usuarioId": "US-101"
+        }
+      ]
+    },
+    {
+      "id": "UN-0012",
+      "equipoId": "EQ-003",
+      "codigoInventario": "INV-ROB-0003",
+      "ubicacion": "Almacén H-102 · anaquel 1",
+      "observaciones": "Faltan tres cables Dupont macho-macho.",
+      "estado": "disponible",
+      "prestamoVigente": null,
+      "historialEstados": [
+        {
+          "de": null,
+          "a": "disponible",
+          "motivo": "Alta de la unidad en el inventario.",
+          "fecha": "2026-03-10T08:25:00.000Z",
+          "usuarioId": "US-101"
+        }
+      ]
+    },
+    {
+      "id": "UN-0013",
+      "equipoId": "EQ-003",
+      "codigoInventario": "INV-ROB-0004",
+      "ubicacion": "Almacén H-102 · anaquel 2",
+      "observaciones": "",
+      "estado": "disponible",
+      "prestamoVigente": null,
+      "historialEstados": [
+        {
+          "de": null,
+          "a": "disponible",
+          "motivo": "Alta de la unidad en el inventario.",
+          "fecha": "2026-03-10T08:25:00.000Z",
+          "usuarioId": "US-101"
+        }
+      ]
+    },
+    {
+      "id": "UN-0014",
+      "equipoId": "EQ-003",
+      "codigoInventario": "INV-ROB-0005",
+      "ubicacion": "Almacén H-102 · anaquel 2",
+      "observaciones": "",
+      "estado": "disponible",
+      "prestamoVigente": null,
+      "historialEstados": [
+        {
+          "de": null,
+          "a": "disponible",
+          "motivo": "Alta de la unidad en el inventario.",
+          "fecha": "2026-03-10T08:25:00.000Z",
+          "usuarioId": "US-101"
+        }
+      ]
+    },
+    {
+      "id": "UN-0015",
+      "equipoId": "EQ-003",
+      "codigoInventario": "INV-ROB-0006",
+      "ubicacion": "Almacén H-102 · anaquel 2",
+      "observaciones": "",
+      "estado": "disponible",
+      "prestamoVigente": null,
+      "historialEstados": [
+        {
+          "de": null,
+          "a": "disponible",
+          "motivo": "Alta de la unidad en el inventario.",
+          "fecha": "2026-03-10T08:25:00.000Z",
+          "usuarioId": "US-101"
+        }
+      ]
+    },
+    {
+      "id": "UN-0016",
+      "equipoId": "EQ-004",
+      "codigoInventario": "INV-TAB-0001",
+      "ubicacion": "Almacén H-102 · anaquel 2",
+      "observaciones": "",
+      "estado": "disponible",
+      "prestamoVigente": null,
+      "historialEstados": [
+        {
+          "de": null,
+          "a": "disponible",
+          "motivo": "Alta de la unidad en el inventario.",
+          "fecha": "2026-03-18T13:45:00.000Z",
+          "usuarioId": "US-101"
+        }
+      ]
+    },
+    {
+      "id": "UN-0017",
+      "equipoId": "EQ-004",
+      "codigoInventario": "INV-TAB-0002",
+      "ubicacion": "Lab. Electrónica H-210",
+      "observaciones": "El lápiz tiene la punta desgastada.",
+      "estado": "prestada",
+      "prestamoVigente": "PRE-2026-0309",
+      "historialEstados": [
+        {
+          "de": null,
+          "a": "disponible",
+          "motivo": "Alta de la unidad en el inventario.",
+          "fecha": "2026-03-18T13:46:00.000Z",
+          "usuarioId": "US-101"
+        },
+        {
+          "de": "disponible",
+          "a": "prestada",
+          "motivo": "Entrega del préstamo PRE-2026-0309.",
+          "fecha": "2026-09-09T10:00:00.000Z",
+          "usuarioId": "US-101"
+        }
+      ]
+    },
+    {
+      "id": "UN-0018",
+      "equipoId": "EQ-004",
+      "codigoInventario": "INV-TAB-0003",
+      "ubicacion": "Lab. Electrónica H-210",
+      "observaciones": "",
+      "estado": "prestada",
+      "prestamoVigente": "PRE-2026-0323",
+      "historialEstados": [
+        {
+          "de": null,
+          "a": "disponible",
+          "motivo": "Alta de la unidad en el inventario.",
+          "fecha": "2026-03-18T13:47:00.000Z",
+          "usuarioId": "US-101"
+        },
+        {
+          "de": "disponible",
+          "a": "prestada",
+          "motivo": "Entrega del préstamo PRE-2026-0323.",
+          "fecha": "2026-09-23T10:40:00.000Z",
+          "usuarioId": "US-102"
+        }
+      ]
+    },
+    {
+      "id": "UN-0019",
+      "equipoId": "EQ-005",
+      "codigoInventario": "INV-MUL-0001",
+      "ubicacion": "Lab. Electrónica H-210",
+      "observaciones": "",
+      "estado": "prestada",
+      "prestamoVigente": "PRE-2026-0330",
+      "historialEstados": [
+        {
+          "de": null,
+          "a": "disponible",
+          "motivo": "Alta de la unidad en el inventario.",
+          "fecha": "2026-03-20T09:55:00.000Z",
+          "usuarioId": "US-101"
+        },
+        {
+          "de": "disponible",
+          "a": "prestada",
+          "motivo": "Entrega del préstamo PRE-2026-0330.",
+          "fecha": "2026-09-30T11:00:00.000Z",
+          "usuarioId": "US-101"
+        }
+      ]
+    },
+    {
+      "id": "UN-0020",
+      "equipoId": "EQ-005",
+      "codigoInventario": "INV-MUL-0002",
+      "ubicacion": "Lab. Física N-301",
+      "observaciones": "",
+      "estado": "prestada",
+      "prestamoVigente": "PRE-2026-0331",
+      "historialEstados": [
+        {
+          "de": null,
+          "a": "disponible",
+          "motivo": "Alta de la unidad en el inventario.",
+          "fecha": "2026-03-20T09:56:00.000Z",
+          "usuarioId": "US-101"
+        },
+        {
+          "de": "disponible",
+          "a": "prestada",
+          "motivo": "Entrega del préstamo PRE-2026-0331.",
+          "fecha": "2026-10-01T08:15:00.000Z",
+          "usuarioId": "US-101"
+        }
+      ]
+    },
+    {
+      "id": "UN-0021",
+      "equipoId": "EQ-005",
+      "codigoInventario": "INV-MUL-0003",
+      "ubicacion": "Servicio técnico externo",
+      "observaciones": "Juego de puntas incompleto: falta la punta roja.",
+      "estado": "mantenimiento",
+      "prestamoVigente": null,
+      "historialEstados": [
+        {
+          "de": null,
+          "a": "disponible",
+          "motivo": "Alta de la unidad en el inventario.",
+          "fecha": "2026-03-20T09:57:00.000Z",
+          "usuarioId": "US-101"
+        },
+        {
+          "de": "disponible",
+          "a": "mantenimiento",
+          "motivo": "Juego de puntas incompleto; en reposición.",
+          "fecha": "2026-08-30T12:00:00.000Z",
+          "usuarioId": "US-102"
+        }
+      ]
+    },
+    {
+      "id": "UN-0022",
+      "equipoId": "EQ-006",
+      "codigoInventario": "INV-RED-0001",
+      "ubicacion": "Almacén H-102 · anaquel 2",
+      "observaciones": "",
+      "estado": "disponible",
+      "prestamoVigente": null,
+      "historialEstados": [
+        {
+          "de": null,
+          "a": "disponible",
+          "motivo": "Alta de la unidad en el inventario.",
+          "fecha": "2026-04-02T09:05:00.000Z",
+          "usuarioId": "US-101"
+        }
+      ]
+    },
+    {
+      "id": "UN-0023",
+      "equipoId": "EQ-006",
+      "codigoInventario": "INV-RED-0002",
+      "ubicacion": "Almacén H-102 · anaquel 2",
+      "observaciones": "",
+      "estado": "disponible",
+      "prestamoVigente": null,
+      "historialEstados": [
+        {
+          "de": null,
+          "a": "disponible",
+          "motivo": "Alta de la unidad en el inventario.",
+          "fecha": "2026-04-02T09:06:00.000Z",
+          "usuarioId": "US-101"
+        }
+      ]
+    },
+    {
+      "id": "UN-0024",
+      "equipoId": "EQ-006",
+      "codigoInventario": "INV-RED-0003",
+      "ubicacion": "Almacén N-005",
+      "observaciones": "Puerto Ethernet partido. Se conserva para repuestos.",
+      "estado": "baja",
+      "prestamoVigente": null,
+      "historialEstados": [
+        {
+          "de": null,
+          "a": "disponible",
+          "motivo": "Alta de la unidad en el inventario.",
+          "fecha": "2026-04-02T09:07:00.000Z",
+          "usuarioId": "US-101"
+        },
+        {
+          "de": "disponible",
+          "a": "mantenimiento",
+          "motivo": "Puerto Ethernet con juego excesivo.",
+          "fecha": "2026-07-15T10:00:00.000Z",
+          "usuarioId": "US-102"
+        },
+        {
+          "de": "mantenimiento",
+          "a": "baja",
+          "motivo": "Puerto partido; la reparación supera el valor del equipo.",
+          "fecha": "2026-09-08T16:30:00.000Z",
+          "usuarioId": "US-101"
+        }
+      ]
+    },
+    {
+      "id": "UN-0025",
+      "equipoId": "EQ-007",
+      "codigoInventario": "INV-TRI-0001",
+      "ubicacion": "Almacén H-102 · anaquel 1",
+      "observaciones": "",
+      "estado": "disponible",
+      "prestamoVigente": null,
+      "historialEstados": [
+        {
+          "de": null,
+          "a": "disponible",
+          "motivo": "Alta de la unidad en el inventario.",
+          "fecha": "2026-04-10T11:05:00.000Z",
+          "usuarioId": "US-101"
+        }
+      ]
+    },
+    {
+      "id": "UN-0026",
+      "equipoId": "EQ-007",
+      "codigoInventario": "INV-TRI-0002",
+      "ubicacion": "Almacén H-102 · anaquel 1",
+      "observaciones": "",
+      "estado": "disponible",
+      "prestamoVigente": null,
+      "historialEstados": [
+        {
+          "de": null,
+          "a": "disponible",
+          "motivo": "Alta de la unidad en el inventario.",
+          "fecha": "2026-04-10T11:05:00.000Z",
+          "usuarioId": "US-101"
+        }
+      ]
+    },
+    {
+      "id": "UN-0027",
+      "equipoId": "EQ-007",
+      "codigoInventario": "INV-TRI-0003",
+      "ubicacion": "Almacén H-102 · anaquel 1",
+      "observaciones": "",
+      "estado": "disponible",
+      "prestamoVigente": null,
+      "historialEstados": [
+        {
+          "de": null,
+          "a": "disponible",
+          "motivo": "Alta de la unidad en el inventario.",
+          "fecha": "2026-04-10T11:05:00.000Z",
+          "usuarioId": "US-101"
+        }
+      ]
+    },
+    {
+      "id": "UN-0028",
+      "equipoId": "EQ-007",
+      "codigoInventario": "INV-TRI-0004",
+      "ubicacion": "Almacén H-102 · anaquel 1",
+      "observaciones": "",
+      "estado": "disponible",
+      "prestamoVigente": null,
+      "historialEstados": [
+        {
+          "de": null,
+          "a": "disponible",
+          "motivo": "Alta de la unidad en el inventario.",
+          "fecha": "2026-04-10T11:05:00.000Z",
+          "usuarioId": "US-101"
+        }
+      ]
+    },
+    {
+      "id": "UN-0029",
+      "equipoId": "EQ-007",
+      "codigoInventario": "INV-TRI-0005",
+      "ubicacion": "Lab. Electrónica H-210",
+      "observaciones": "",
+      "estado": "prestada",
+      "prestamoVigente": "PRE-2026-0317",
+      "historialEstados": [
+        {
+          "de": null,
+          "a": "disponible",
+          "motivo": "Alta de la unidad en el inventario.",
+          "fecha": "2026-04-10T11:09:00.000Z",
+          "usuarioId": "US-101"
+        },
+        {
+          "de": "disponible",
+          "a": "prestada",
+          "motivo": "Entrega del préstamo PRE-2026-0317.",
+          "fecha": "2026-09-20T09:00:00.000Z",
+          "usuarioId": "US-101"
+        }
+      ]
+    },
+    {
+      "id": "UN-0030",
+      "equipoId": "EQ-008",
+      "codigoInventario": "INV-FUE-0001",
+      "ubicacion": "Lab. Física N-301",
+      "observaciones": "",
+      "estado": "disponible",
+      "prestamoVigente": null,
+      "historialEstados": [
+        {
+          "de": null,
+          "a": "disponible",
+          "motivo": "Alta de la unidad en el inventario.",
+          "fecha": "2026-04-12T14:15:00.000Z",
+          "usuarioId": "US-101"
+        }
+      ]
+    },
+    {
+      "id": "UN-0031",
+      "equipoId": "EQ-008",
+      "codigoInventario": "INV-FUE-0002",
+      "ubicacion": "Lab. Física N-301",
+      "observaciones": "",
+      "estado": "disponible",
+      "prestamoVigente": null,
+      "historialEstados": [
+        {
+          "de": null,
+          "a": "disponible",
+          "motivo": "Alta de la unidad en el inventario.",
+          "fecha": "2026-04-12T14:15:00.000Z",
+          "usuarioId": "US-101"
+        }
+      ]
+    },
+    {
+      "id": "UN-0032",
+      "equipoId": "EQ-008",
+      "codigoInventario": "INV-FUE-0003",
+      "ubicacion": "Lab. Física N-301",
+      "observaciones": "",
+      "estado": "disponible",
+      "prestamoVigente": null,
+      "historialEstados": [
+        {
+          "de": null,
+          "a": "disponible",
+          "motivo": "Alta de la unidad en el inventario.",
+          "fecha": "2026-04-12T14:15:00.000Z",
+          "usuarioId": "US-101"
+        }
+      ]
+    },
+    {
+      "id": "UN-0033",
+      "equipoId": "EQ-008",
+      "codigoInventario": "INV-FUE-0004",
+      "ubicacion": "Servicio técnico externo",
+      "observaciones": "El canal 2 no entrega tensión.",
+      "estado": "mantenimiento",
+      "prestamoVigente": null,
+      "historialEstados": [
+        {
+          "de": null,
+          "a": "disponible",
+          "motivo": "Alta de la unidad en el inventario.",
+          "fecha": "2026-04-12T14:18:00.000Z",
+          "usuarioId": "US-101"
+        },
+        {
+          "de": "disponible",
+          "a": "mantenimiento",
+          "motivo": "El canal 2 dejó de entregar tensión.",
+          "fecha": "2026-09-26T12:00:00.000Z",
+          "usuarioId": "US-101"
+        }
+      ]
+    },
+    {
+      "id": "UN-0034",
+      "equipoId": "EQ-010",
+      "codigoInventario": "INV-PRY-0001",
+      "ubicacion": "Almacén N-005",
+      "observaciones": "Panel láser con pérdida de brillo.",
+      "estado": "baja",
+      "prestamoVigente": null,
+      "historialEstados": [
+        {
+          "de": null,
+          "a": "disponible",
+          "motivo": "Alta de la unidad en el inventario.",
+          "fecha": "2026-04-20T10:05:00.000Z",
+          "usuarioId": "US-101"
+        },
+        {
+          "de": "disponible",
+          "a": "baja",
+          "motivo": "Pérdida de brillo irreversible del panel láser.",
+          "fecha": "2026-08-05T15:00:00.000Z",
+          "usuarioId": "US-101"
+        }
+      ]
+    },
+    {
+      "id": "UN-0035",
+      "equipoId": "EQ-010",
+      "codigoInventario": "INV-PRY-0002",
+      "ubicacion": "Almacén N-005",
+      "observaciones": "Sin repuestos en el mercado local.",
+      "estado": "baja",
+      "prestamoVigente": null,
+      "historialEstados": [
+        {
+          "de": null,
+          "a": "disponible",
+          "motivo": "Alta de la unidad en el inventario.",
+          "fecha": "2026-04-20T10:06:00.000Z",
+          "usuarioId": "US-101"
+        },
+        {
+          "de": "disponible",
+          "a": "mantenimiento",
+          "motivo": "No enciende.",
+          "fecha": "2026-06-10T09:00:00.000Z",
+          "usuarioId": "US-102"
+        },
+        {
+          "de": "mantenimiento",
+          "a": "baja",
+          "motivo": "Sin repuestos disponibles en el mercado local.",
+          "fecha": "2026-08-05T15:00:00.000Z",
+          "usuarioId": "US-101"
+        }
+      ]
+    }
+  ]
+}
