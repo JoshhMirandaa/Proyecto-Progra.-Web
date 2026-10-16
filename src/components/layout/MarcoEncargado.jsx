@@ -97,6 +97,7 @@ export function MarcoEncargado({ children }) {
               <Enlace a="/reservas" cuenta={externos?.reservas}>
                 Reservas
               </Enlace>
+              <Enlace a="/mis-reservas">Mis reservas</Enlace>
               <Enlace a="/lista-espera" cuenta={externos?.listaEspera}>
                 Lista de espera
               </Enlace>
