@@ -1,16 +1,58 @@
-# React + Vite
+# Almacén de Equipos — Sistema de Préstamo de Equipos de Laboratorio
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Proyecto del curso Programación Web (Universidad de Lima). Primera entrega: interfaz de
+usuario en React con los datos manejados íntegramente en el front.
 
-Currently, two official plugins are available:
+## Cómo ejecutarlo
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Requisitos: Node.js 20 o superior.
 
-## React Compiler
+```bash
+npm install
+npm run dev
+```
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Abrir `http://localhost:5173`. Para compilar la versión de producción: `npm run build`.
 
-## Expanding the Oxlint configuration
+Si se ven datos de una prueba anterior, borrar el almacenamiento local del sitio
+(F12 → Application → Local Storage → Clear) y recargar.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+## Cuentas de prueba
+
+Todas usan la contraseña `Clave2026`.
+
+| Correo | Rol | Caso |
+|---|---|---|
+| `erivas@ulima.edu.pe` | Encargado de almacén | Cuenta activa |
+| `jsalinas@ulima.edu.pe` | Encargado de almacén | Pendiente de aprobación |
+| `rmendoza@aloe.ulima.edu.pe` | Estudiante | Sin deuda, con solicitudes en todos los estados |
+| `ahuaman@aloe.ulima.edu.pe` | Estudiante | Con deuda pendiente |
+| `atorres@aloe.ulima.edu.pe` | Estudiante | Cuenta bloqueada |
+
+## Historias de usuario
+
+| Historia | Responsable | Documentación |
+|---|---|---|
+| HU-1 Cuenta y acceso | Angelo Cano | `docs/HU-1-cuentas.md` |
+| HU-2 Inventario | Rodrigo Ventocilla | `docs/HU-2-inventario.md` |
+| HU-3 Catálogo y solicitud | Renzo Bendezú | `docs/HU-3-catalogo.md` |
+| HU-4 Aprobación y entrega | Diego Licas | `docs/HU-4-prestamos.md` |
+| HU-5 Devoluciones | Josh Miranda | `docs/HU-5-devoluciones.md` |
+| HU-6 Reserva anticipada | Felipe Madalengoitia | `docs/HU-6-reservas.md` |
+
+## Estructura
+
+El código está organizado por capas; ningún componente de interfaz accede a los datos.
+
+| Carpeta | Contenido |
+|---|---|
+| `src/pages/`, `src/components/` | Interfaz: vistas y componentes (los comunes en `components/ui` y `components/layout`) |
+| `src/context/` | Estado compartido con Context; único punto que llama a los servicios |
+| `src/services/` | Acceso a datos; repiten las validaciones. En la segunda entrega harán `fetch` a la API |
+| `src/domain/` | Reglas del negocio como funciones puras |
+| `src/data/` | Contrato de datos (`CONTRATO-DATOS.md`) y datos semilla en JSON |
+
+## Tecnologías
+
+React 19, React Router 7, Vite 8 y CSS propio. Las contraseñas se guardan como resumen
+SHA-256 (Web Crypto API).

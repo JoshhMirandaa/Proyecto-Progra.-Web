@@ -26,9 +26,9 @@ export function leerImagenCuadrada(archivo) {
         const lienzo = document.createElement('canvas')
         lienzo.width = LADO
         lienzo.height = LADO
-        const ctx = lienzo.getContext('2d')
+        const pincel = lienzo.getContext('2d')
         const lado = Math.min(imagen.width, imagen.height)
-        ctx.drawImage(
+        pincel.drawImage(
           imagen,
           (imagen.width - lado) / 2,
           (imagen.height - lado) / 2,
