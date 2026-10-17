@@ -146,6 +146,12 @@ export async function listarListaEspera(usuarioId) {
     }))
 }
 
+/** Todas las reservas en lista de espera (las lee la HU-5 para decidir una renovación). */
+export async function listarEnEspera() {
+  await esperar()
+  return leerReservas().reservas.filter((reserva) => reserva.estado === 'en_espera')
+}
+
 export async function crearReserva(datos) {
   await esperar()
   const { usuarioId, equipoId, fechaInicio, fechaFin, motivo } = datos

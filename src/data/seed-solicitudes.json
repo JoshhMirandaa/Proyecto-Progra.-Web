@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "descripcion": "Datos semilla de la HU-3 (solicitudes de préstamo), según los mockups 3.1 a 3.4. Las solicitudes de Renzo Mendoza (US-201) cubren todos los estados. Las tres aprobadas del osciloscopio del 2 al 6 de noviembre ocupan sus tres unidades disponibles: sirven para probar el aviso de fechas no disponibles. Las solicitudes SOL-03xx y SOL-04xx son de otros estudiantes para la bandeja (HU-4) y los préstamos vigentes; cada préstamo entregado coincide con una unidad «prestada» del inventario. SOL-0307 (Sebastián, osciloscopio del 3 al 6 de noviembre) quedó pendiente antes de esas aprobaciones: sirve para la variante 4.2 sin unidades libres.",
+    "descripcion": "Datos semilla de la HU-3 (solicitudes de préstamo), según los mockups 3.1 a 3.4. Las solicitudes de Renzo Mendoza (US-201) cubren todos los estados. Las tres aprobadas del osciloscopio del 2 al 6 de noviembre ocupan sus tres unidades disponibles: sirven para probar el aviso de fechas no disponibles. Las solicitudes SOL-03xx y SOL-04xx son de otros estudiantes para la bandeja (HU-4) y los préstamos vigentes; cada préstamo entregado coincide con una unidad «prestada» del inventario. SOL-0307 (Sebastián, osciloscopio del 3 al 6 de noviembre) quedó pendiente antes de esas aprobaciones: sirve para la variante 4.2 sin unidades libres. SOL-0501 a SOL-0503 son devoluciones con retraso y penalidad pendiente (Camila S/ 45, Lucía S/ 45, Alejandra S/ 60): explican la deuda de la HU-1 y sirven para el historial 5.4.",
     "version": 1,
     "generadoEn": "2026-10-16"
   },
@@ -85,7 +85,11 @@
       "motivoRechazo": "",
       "codigoPrestamo": "PRE-2026-0302",
       "creadaEn": "2026-09-24T10:00:00.000Z",
-      "resueltaEn": "2026-09-25T08:15:00.000Z"
+      "resueltaEn": "2026-09-25T08:15:00.000Z",
+      "fechaDevolucionReal": "2026-10-02",
+      "estadoRetorno": "sin_novedades",
+      "diasRetraso": 0,
+      "penalidad": null
     },
     {
       "id": "SOL-0106",
@@ -115,7 +119,18 @@
       "motivoRechazo": "",
       "codigoPrestamo": "PRE-2026-0287",
       "creadaEn": "2026-09-10T17:00:00.000Z",
-      "resueltaEn": "2026-09-11T08:20:00.000Z"
+      "resueltaEn": "2026-09-11T08:20:00.000Z",
+      "fechaDevolucionReal": "2026-09-19",
+      "estadoRetorno": "sin_novedades",
+      "diasRetraso": 1,
+      "penalidad": {
+        "monto": 6,
+        "estado": "pagada",
+        "calculadaEn": "2026-09-19T15:00:00.000Z",
+        "pagadaEn": "2026-09-21T10:00:00.000Z",
+        "recibidoPor": "US-101"
+      },
+      "recibidaPor": "US-101"
     },
     {
       "id": "SOL-0201",
@@ -392,6 +407,142 @@
       "accesoriosEntregados": ["Rótula de bola", "Placa rápida"],
       "observacionesEntrega": "Patas completas.",
       "entregadaPor": "US-101"
+    },
+    {
+      "id": "SOL-0501",
+      "estudianteId": "US-207",
+      "equipoId": "EQ-001",
+      "unidadId": "UN-0002",
+      "fechaInicio": "2026-09-07",
+      "fechaFin": "2026-09-11",
+      "curso": "IN324",
+      "motivo": "Práctica calificada 2 de circuitos: medición de señales en el laboratorio.",
+      "estado": "devuelta",
+      "motivoRechazo": "",
+      "codigoPrestamo": "PRE-2026-0291",
+      "creadaEn": "2026-09-03T10:00:00.000Z",
+      "resueltaEn": "2026-09-04T09:00:00.000Z",
+      "resueltaPor": "US-101",
+      "fechaEntregaReal": "2026-09-07T14:20:00.000Z",
+      "accesoriosEntregados": [
+        "Sonda pasiva 1X/10X (x2)",
+        "Cable de poder",
+        "Guía rápida impresa"
+      ],
+      "observacionesEntrega": "Equipo operativo, sin observaciones.",
+      "entregadaPor": "US-101",
+      "fechaDevolucionReal": "2026-09-14",
+      "estadoRetorno": "sin_novedades",
+      "accesoriosDevueltos": [
+        "Sonda pasiva 1X/10X (x2)",
+        "Cable de poder",
+        "Guía rápida impresa"
+      ],
+      "accesoriosFaltantes": [],
+      "descripcionDano": "",
+      "fotoDano": null,
+      "derivadaMantenimiento": false,
+      "observacionesDevolucion": "",
+      "diasRetraso": 3,
+      "penalidad": {
+        "monto": 45,
+        "estado": "pendiente",
+        "calculadaEn": "2026-09-14T15:00:00.000Z"
+      },
+      "recibidaPor": "US-101",
+      "devueltaEn": "2026-09-14T15:00:00.000Z"
+    },
+    {
+      "id": "SOL-0502",
+      "estudianteId": "US-206",
+      "equipoId": "EQ-001",
+      "unidadId": "UN-0005",
+      "fechaInicio": "2026-08-24",
+      "fechaFin": "2026-08-28",
+      "curso": "FI201",
+      "motivo": "Mediciones para la tesis: caracterización del circuito de carga.",
+      "estado": "devuelta",
+      "motivoRechazo": "",
+      "codigoPrestamo": "PRE-2026-0256",
+      "creadaEn": "2026-08-20T11:00:00.000Z",
+      "resueltaEn": "2026-08-21T08:30:00.000Z",
+      "resueltaPor": "US-101",
+      "fechaEntregaReal": "2026-08-24T15:00:00.000Z",
+      "accesoriosEntregados": [
+        "Sonda pasiva 1X/10X (x2)",
+        "Cable de poder",
+        "Guía rápida impresa"
+      ],
+      "observacionesEntrega": "Equipo operativo, sin observaciones.",
+      "entregadaPor": "US-101",
+      "fechaDevolucionReal": "2026-08-31",
+      "estadoRetorno": "sin_novedades",
+      "accesoriosDevueltos": [
+        "Sonda pasiva 1X/10X (x2)",
+        "Cable de poder",
+        "Guía rápida impresa"
+      ],
+      "accesoriosFaltantes": [],
+      "descripcionDano": "",
+      "fotoDano": null,
+      "derivadaMantenimiento": false,
+      "observacionesDevolucion": "",
+      "diasRetraso": 3,
+      "penalidad": {
+        "monto": 45,
+        "estado": "pendiente",
+        "calculadaEn": "2026-08-31T15:00:00.000Z"
+      },
+      "recibidaPor": "US-101",
+      "devueltaEn": "2026-08-31T15:00:00.000Z"
+    },
+    {
+      "id": "SOL-0503",
+      "estudianteId": "US-202",
+      "equipoId": "EQ-002",
+      "unidadId": "UN-0007",
+      "fechaInicio": "2026-09-21",
+      "fechaFin": "2026-09-25",
+      "curso": "CO210",
+      "motivo": "Registro fotográfico de la feria de emprendimiento del curso.",
+      "estado": "devuelta",
+      "motivoRechazo": "",
+      "codigoPrestamo": "PRE-2026-0298",
+      "creadaEn": "2026-09-17T09:30:00.000Z",
+      "resueltaEn": "2026-09-18T08:00:00.000Z",
+      "resueltaPor": "US-101",
+      "fechaEntregaReal": "2026-09-21T13:10:00.000Z",
+      "accesoriosEntregados": [
+        "Estuche rígido",
+        "Cargador",
+        "Batería de repuesto",
+        "Correa",
+        "Cable USB"
+      ],
+      "observacionesEntrega": "Equipo operativo, sin observaciones.",
+      "entregadaPor": "US-101",
+      "fechaDevolucionReal": "2026-09-28",
+      "estadoRetorno": "sin_novedades",
+      "accesoriosDevueltos": [
+        "Estuche rígido",
+        "Cargador",
+        "Batería de repuesto",
+        "Correa",
+        "Cable USB"
+      ],
+      "accesoriosFaltantes": [],
+      "descripcionDano": "",
+      "fotoDano": null,
+      "derivadaMantenimiento": false,
+      "observacionesDevolucion": "",
+      "diasRetraso": 3,
+      "penalidad": {
+        "monto": 60,
+        "estado": "pendiente",
+        "calculadaEn": "2026-09-28T15:00:00.000Z"
+      },
+      "recibidaPor": "US-101",
+      "devueltaEn": "2026-09-28T15:00:00.000Z"
     }
   ]
 }

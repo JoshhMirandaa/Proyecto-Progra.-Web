@@ -334,7 +334,9 @@ function FilaSolicitud({ s, habilitado, alAprobar, alRechazar, alVerMotivo }) {
   return (
     <tr>
       <td>
-        <span className="tabla-nombre">{s.estudianteNombre}</span>
+        <Link to={`/estudiantes/${s.estudianteId}`} className="tabla-nombre">
+          {s.estudianteNombre}
+        </Link>
         <p className="sm suave">
           {s.estudianteDetalle || s.estudianteCodigo}
           {s.deudaEstudiante > 0 && (
