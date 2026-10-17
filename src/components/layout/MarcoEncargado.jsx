@@ -1,5 +1,6 @@
 import { NavLink, Link } from 'react-router-dom'
 import { useInventario } from '../../context/InventarioContext.jsx'
+import { usePrestamos } from '../../context/PrestamosContext.jsx'
 import { useSesion } from '../../context/SesionContext.jsx'
 import { ALMACEN } from '../../domain/catalogos.js'
 import { MenuUsuario } from './MenuUsuario.jsx'
@@ -27,6 +28,7 @@ export function MarcoEncargado({ children }) {
   const { resumen } = useInventario()
   const { almacen } = useSesion()
   const externos = resumen?.externos
+  const { contadores } = usePrestamos()
 
   return (
     <div className="marco">
@@ -54,10 +56,10 @@ export function MarcoEncargado({ children }) {
         </form>
 
         <div className="barra-fin">
-          <span className="pendientes">
+          <Link to="/solicitudes" className="pendientes">
             Solicitudes pendientes
-            <span className="contador">{externos?.solicitudes ?? 0}</span>
-          </span>
+            <span className="contador">{contadores.pendientes}</span>
+          </Link>
           <MenuUsuario detalle={almacen.replace('Almacén ', '')} />
         </div>
       </header>
@@ -70,13 +72,13 @@ export function MarcoEncargado({ children }) {
               <Enlace a="/inventario" cuenta={resumen?.unidades}>
                 Inventario
               </Enlace>
-              <Enlace a="/solicitudes" cuenta={externos?.solicitudes}>
+              <Enlace a="/solicitudes" cuenta={contadores.pendientes}>
                 Solicitudes
               </Enlace>
-              <Enlace a="/prestamos" cuenta={resumen?.prestadas}>
+              <Enlace a="/prestamos" cuenta={contadores.vigentes}>
                 Préstamos vigentes
               </Enlace>
-              <Enlace a="/vencidos" cuenta={externos?.vencidos} alerta>
+              <Enlace a="/vencidos" cuenta={contadores.vencidos} alerta>
                 Vencidos
               </Enlace>
               <Enlace

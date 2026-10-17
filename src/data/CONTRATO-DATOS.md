@@ -172,9 +172,20 @@ Archivo semilla de la primera entrega: `src/data/seed-solicitudes.json`.
   "motivoRechazo": "",              // lo llena la HU-4 al rechazar; visible para el estudiante
   "codigoPrestamo": null,           // lo genera la HU-4 al registrar la entrega
   "creadaEn": "2026-10-14T16:20:00.000Z",
-  "resueltaEn": null                // fecha de aprobación, rechazo o retiro
+  "resueltaEn": null,               // fecha de aprobación, rechazo o retiro
+  "resueltaPor": null,              // HU-4: id del encargado que aprobó o rechazó
+
+  // Los pone la HU-4 al registrar la entrega (estado "en_prestamo"):
+  "fechaEntregaReal": null,         // ISO con hora
+  "accesoriosEntregados": [],       // nombres, tomados de equipo.accesorios
+  "detalleAccesorios": [],          // [{ nombre, entregado, nota }] para la constancia
+  "observacionesEntrega": "",       // estado inicial del equipo, 5 a 300 caracteres
+  "entregadaPor": null              // id del encargado
 }
 ```
+
+`codigoPrestamo` sigue el formato `PRE-AAAA-NNNN` y es el mismo que la HU-2 guarda en
+`unidad.prestamoVigente` mientras la unidad está `prestada`.
 
 | `estado`      | Se muestra como | Quién lo pone | ¿Ocupa una unidad? |
 |---------------|-----------------|---------------|--------------------|

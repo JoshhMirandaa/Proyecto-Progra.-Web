@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+import { HORA_DEVOLUCION } from '../../domain/prestamos.js'
 import { formatearFecha } from '../../domain/solicitudes.js'
 import { Modal } from '../ui/Modal.jsx'
 import { EstadoSolicitud } from './EstadoSolicitud.jsx'
@@ -72,8 +74,8 @@ export function DetalleSolicitud({ solicitud, alCerrar, alRetirar }) {
       )}
       {s.estado === 'en_prestamo' && (
         <div className="aviso aviso--info" style={{ marginTop: '1rem' }}>
-          Devuelve el equipo el {formatearFecha(s.fechaFin)} antes de las 19:00. La constancia de
-          entrega la emite el almacén (HU-4) con el código {s.codigoPrestamo}.
+          Devuelve el equipo el {formatearFecha(s.fechaFin)} antes de las {HORA_DEVOLUCION}. Tu
+          constancia de entrega tiene el código {s.codigoPrestamo}.
         </div>
       )}
 
@@ -82,6 +84,11 @@ export function DetalleSolicitud({ solicitud, alCerrar, alRetirar }) {
           <button type="button" className="boton boton--peligro" onClick={() => alRetirar(s)}>
             Retirar solicitud
           </button>
+        )}
+        {s.codigoPrestamo && (
+          <Link to={`/constancias/${s.codigoPrestamo}`} className="boton boton--contorno">
+            Ver constancia
+          </Link>
         )}
         <button type="button" className="boton boton--neutro" onClick={alCerrar}>
           Cerrar

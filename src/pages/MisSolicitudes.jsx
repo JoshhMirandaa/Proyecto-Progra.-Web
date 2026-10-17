@@ -192,6 +192,13 @@ export function MisSolicitudes() {
                         >
                           Retirar solicitud
                         </button>
+                      ) : s.estado === 'en_prestamo' && s.codigoPrestamo ? (
+                        <Link
+                          to={`/constancias/${s.codigoPrestamo}`}
+                          className="boton boton--texto"
+                        >
+                          Ver constancia
+                        </Link>
                       ) : (
                         <button
                           type="button"
