@@ -39,18 +39,24 @@ así se conservan al volver del detalle y la búsqueda de la barra superior lleg
 - Motivo de 20 a 500 caracteres, curso obligatorio y aceptación de condiciones.
 - Si no hay unidades libres en el rango, se avisa y se propone el próximo rango libre de la misma duración.
 - No se puede tener dos solicitudes abiertas del mismo equipo en fechas que se cruzan.
-- Un estudiante con deuda pendiente no puede solicitar (la deuda es de la HU-5; hoy viaja en el usuario simulado).
+- Un estudiante con deuda pendiente no puede solicitar (la deuda es de la HU-5; hoy viaja en el usuario de la HU-1).
 - Solo se retira una solicitud `pendiente`, previa confirmación.
 - Todas las reglas se validan en el formulario y otra vez en el servicio.
 
 ## Para probar
 
-El selector **Ver como** de la barra cambia el usuario simulado (Encargado, Estudiante,
-Estudiante con deuda, Visitante). Lo reemplaza el inicio de sesión de la HU-1.
+Ingresa en `/login` con una cuenta de prueba (contraseña `Clave2026` para todas; la lista
+está en el recuadro «Cuentas de prueba» del inicio de sesión):
+
+- `rmendoza@aloe.ulima.edu.pe` — estudiante con solicitudes en todos los estados.
+- `cquispe@aloe.ulima.edu.pe` — estudiante con deuda (S/ 45.00): no puede solicitar.
+- Sin sesión, el catálogo se ve en modo lectura y «Mis solicitudes» pide iniciar sesión.
+
+Casos:
 
 - Osciloscopio del 2 al 5 de noviembre: no hay unidades (tres solicitudes aprobadas) y propone del 7 al 10.
-- Multímetro Fluke: sin unidades libres; se libera el 21/10.
-- Estudiante con deuda: no puede solicitar (S/ 45.00).
+- Multímetro Fluke: sin unidades libres; se libera el 18/10.
+- Una solicitud entregada abre su constancia (HU-4) con «Ver constancia».
 
 ## Pendiente con el grupo
 

@@ -112,18 +112,28 @@ Servicio técnico externo.
 
 ---
 
-## Usuario (lectura, dueño: HU-1)
+## Usuario (dueño: HU-1)
 
-La HU-2 solo usa estos campos. HU-1 puede agregar más.
+Archivo semilla: `src/data/seed-usuarios.json`. Las otras historias lo leen con
+`listarUsuariosPublicos()` o `useSesion()`, que nunca exponen `contrasenaHash`.
 
 ```jsonc
 {
-  "id": "US-101",
-  "nombres": "Elena",
-  "apellidos": "Rivas",
-  "correo": "erivas@ulima.edu.pe",
-  "rol": "encargado",                // "estudiante" | "encargado"
-  "almacenAsignado": "Almacén H-102" // solo rol encargado
+  "id": "US-201",
+  "nombres": "Renzo Andrés",
+  "apellidos": "Mendoza Cárdenas",
+  "correo": "rmendoza@aloe.ulima.edu.pe",   // estudiante: @aloe.ulima.edu.pe · encargado: @ulima.edu.pe
+  "rol": "estudiante",                      // "estudiante" | "encargado"
+  "estado": "activo",                       // "activo" | "por_verificar" | "pendiente_aprobacion" | "bloqueado"
+  "contrasenaHash": "…",                    // SHA-256 de "id:contraseña" (bcrypt en la 2.ª entrega)
+  "codigo": "20213456",                     // solo estudiante
+  "carrera": "Ingeniería Electrónica",      // solo estudiante
+  "ciclo": 6,                               // solo estudiante
+  "celular": "",
+  "deudaPendiente": 0,                      // S/; la calcula la HU-5, hoy viaja en el usuario
+  "almacenAsignado": null,                  // solo encargado, p. ej. "Almacén H-102"
+  "anexo": null,                            // solo encargado
+  "creadoEn": "2026-03-02T14:00:00.000Z"
 }
 ```
 

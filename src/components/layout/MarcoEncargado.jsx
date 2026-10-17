@@ -2,7 +2,7 @@ import { NavLink, Link } from 'react-router-dom'
 import { useInventario } from '../../context/InventarioContext.jsx'
 import { useSesion } from '../../context/SesionContext.jsx'
 import { ALMACEN } from '../../domain/catalogos.js'
-import { SelectorPerfilDemo } from './SelectorPerfilDemo.jsx'
+import { MenuUsuario } from './MenuUsuario.jsx'
 
 const SINCRONIZACION = '14/09/2026 08:05'
 
@@ -25,7 +25,7 @@ function Enlace({ a, children, cuenta, alerta = false }) {
 /** Marco del panel del encargado: barra superior, riel de navegación y pie. */
 export function MarcoEncargado({ children }) {
   const { resumen } = useInventario()
-  const { nombreCorto, iniciales, almacen } = useSesion()
+  const { almacen } = useSesion()
   const externos = resumen?.externos
 
   return (
@@ -54,19 +54,11 @@ export function MarcoEncargado({ children }) {
         </form>
 
         <div className="barra-fin">
-          <SelectorPerfilDemo />
           <span className="pendientes">
             Solicitudes pendientes
             <span className="contador">{externos?.solicitudes ?? 0}</span>
           </span>
-          <span className="usuario">
-            <span>
-              {nombreCorto} · {almacen.replace('Almacén ', '')}
-            </span>
-            <span className="avatar" aria-hidden="true">
-              {iniciales}
-            </span>
-          </span>
+          <MenuUsuario detalle={almacen.replace('Almacén ', '')} />
         </div>
       </header>
 
@@ -87,7 +79,10 @@ export function MarcoEncargado({ children }) {
               <Enlace a="/vencidos" cuenta={externos?.vencidos} alerta>
                 Vencidos
               </Enlace>
-              <Enlace a="/devoluciones" cuenta={externos?.devoluciones ? externos.devoluciones : '—'}>
+              <Enlace
+                a="/devoluciones"
+                cuenta={externos?.devoluciones ? externos.devoluciones : '—'}
+              >
                 Devoluciones
               </Enlace>
             </div>

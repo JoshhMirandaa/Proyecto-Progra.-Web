@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom'
 import { useSesion } from '../../context/SesionContext.jsx'
-import { SelectorPerfilDemo } from './SelectorPerfilDemo.jsx'
+import { MenuUsuario } from './MenuUsuario.jsx'
 
 const activo = ({ isActive }) => (isActive ? 'activo' : undefined)
 
@@ -37,7 +37,7 @@ function Buscador({ inicial }) {
 
 /** Marco de las vistas del estudiante (mockups 3.1 a 3.4 y 6.1, 6.3). */
 export function MarcoEstudiante({ children }) {
-  const { esEstudiante, nombreCorto, iniciales } = useSesion()
+  const { esEstudiante } = useSesion()
   const { pathname, search } = useLocation()
   // Si el texto de la URL cambia (por ejemplo, al limpiar filtros), el buscador se reinicia.
   const textoUrl = pathname === '/catalogo' ? (new URLSearchParams(search).get('q') ?? '') : ''
@@ -72,16 +72,12 @@ export function MarcoEstudiante({ children }) {
         <Buscador key={textoUrl} inicial={textoUrl} />
 
         <div className="barra-fin">
-          <SelectorPerfilDemo />
           {esEstudiante ? (
-            <span className="usuario">
-              <span>{nombreCorto}</span>
-              <span className="avatar" aria-hidden="true">
-                {iniciales}
-              </span>
-            </span>
+            <MenuUsuario />
           ) : (
-            <span className="sm suave">Inicia sesión para solicitar</span>
+            <Link to="/login" className="boton boton--contorno boton--sm">
+              Iniciar sesión
+            </Link>
           )}
         </div>
       </header>
