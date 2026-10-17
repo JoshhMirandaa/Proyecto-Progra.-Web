@@ -81,10 +81,7 @@ export function MarcoEncargado({ children }) {
               <Enlace a="/vencidos" cuenta={contadores.vencidos} alerta>
                 Vencidos
               </Enlace>
-              <Enlace
-                a="/devoluciones"
-                cuenta={externos?.devoluciones ? externos.devoluciones : '—'}
-              >
+              <Enlace a="/devoluciones" cuenta={contadores.vencidos + contadores.vencenHoy}>
                 Devoluciones
               </Enlace>
             </div>

@@ -12,7 +12,7 @@ import { useNotificacion } from './NotificacionContext.jsx'
 import { useSesion } from './SesionContext.jsx'
 
 const PrestamosContext = createContext(null)
-const SIN_CONTADORES = { pendientes: 0, vigentes: 0, vencidos: 0 }
+const SIN_CONTADORES = { pendientes: 0, vigentes: 0, vencidos: 0, vencenHoy: 0 }
 
 export function PrestamosProvider({ children }) {
   const notificacion = useNotificacion()
@@ -55,6 +55,8 @@ export function PrestamosProvider({ children }) {
     () => ({
       version,
       contadores,
+      /** Otra historia cambió préstamos (la devolución de la HU-5): recarga vistas y contadores. */
+      refrescar: () => setVersion((v) => v + 1),
 
       // consultas
       listarBandeja: servicio.listarBandeja,

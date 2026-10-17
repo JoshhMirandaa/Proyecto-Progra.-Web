@@ -130,7 +130,7 @@ Archivo semilla: `src/data/seed-usuarios.json`. Las otras historias lo leen con
   "carrera": "Ingeniería Electrónica",      // solo estudiante
   "ciclo": 6,                               // solo estudiante
   "celular": "",
-  "deudaPendiente": 0,                      // S/; la calcula la HU-5, hoy viaja en el usuario
+  "deudaPendiente": 0,                      // S/; la calcula la HU-5 (penalidades pendientes)
   "almacenAsignado": null,                  // solo encargado, p. ej. "Almacén H-102"
   "anexo": null,                            // solo encargado
   "creadoEn": "2026-03-02T14:00:00.000Z"
@@ -183,6 +183,28 @@ Archivo semilla de la primera entrega: `src/data/seed-solicitudes.json`.
   "entregadaPor": null              // id del encargado
 }
 ```
+
+Campos que pone la HU-5 al registrar la devolución (estado `devuelta`) o al renovar:
+
+```jsonc
+{
+  "fechaDevolucionReal": "2026-10-17",        // AAAA-MM-DD, no futura ni anterior a la entrega
+  "estadoRetorno": "faltantes",               // "sin_novedades" | "con_danos" | "faltantes"
+  "accesoriosDevueltos": ["Cargador"],
+  "accesoriosFaltantes": ["Correa"],          // quedan «por valorizar»
+  "descripcionDano": "",
+  "fotoDano": null,                           // data URL reducida o null
+  "derivadaMantenimiento": true,              // la unidad pasó a "mantenimiento" (si no, a "disponible")
+  "observacionesDevolucion": "",
+  "diasRetraso": 3,
+  "penalidad": { "monto": 60, "estado": "pendiente" }, // o null; "pagada" con pagadaEn y recibidoPor
+  "recibidaPor": "US-101",
+  "renovaciones": [{ "fechaFinAnterior": "2026-10-20", "fechaFinNueva": "2026-10-23", "dias": 3 }]
+}
+```
+
+`usuario.deudaPendiente` es la suma de las penalidades pendientes del estudiante; la calcula la
+HU-5 y la guarda con `establecerDeuda()` de la HU-1.
 
 `codigoPrestamo` sigue el formato `PRE-AAAA-NNNN` y es el mismo que la HU-2 guarda en
 `unidad.prestamoVigente` mientras la unidad está `prestada`.

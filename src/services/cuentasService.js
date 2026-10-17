@@ -417,6 +417,19 @@ export async function listarUsuariosPublicos() {
   return leerUsuarios().map(usuarioPublico)
 }
 
+/**
+ * La deuda la calcula la HU-5 (suma de penalidades pendientes) y la guarda aquí, porque el
+ * usuario es de la HU-1. Así el aviso de deuda de la HU-3 y la HU-4 lee un solo dato.
+ */
+export async function establecerDeuda(usuarioId, monto) {
+  const usuarios = leerUsuarios()
+  const indice = usuarios.findIndex((u) => u.id === usuarioId)
+  if (indice === -1) throw new ErrorCuenta('No encontramos al estudiante.', 404)
+  usuarios[indice] = { ...usuarios[indice], deudaPendiente: Math.max(0, Number(monto) || 0) }
+  escribir(CLAVE_USUARIOS, usuarios)
+  return usuarioPublico(usuarios[indice])
+}
+
 /** Vuelve a cargar los usuarios semilla. Útil para demostrar la data de prueba. */
 export async function restablecerUsuarios() {
   escribir(CLAVE_USUARIOS, clonar(semilla.usuarios))

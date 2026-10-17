@@ -7,6 +7,7 @@ import { Notificaciones } from './components/ui/Notificaciones.jsx'
 import { CatalogoProvider } from './context/CatalogoContext.jsx'
 import { InventarioProvider } from './context/InventarioContext.jsx'
 import { NotificacionProvider } from './context/NotificacionContext.jsx'
+import { DevolucionesProvider } from './context/DevolucionesContext.jsx'
 import { PrestamosProvider } from './context/PrestamosContext.jsx'
 import { ReservaProvider } from './context/ReservaContext.jsx'
 import { SesionProvider, useSesion } from './context/SesionContext.jsx'
@@ -14,6 +15,7 @@ import { INICIO_POR_ROL, destinoTrasIngresar } from './domain/cuentas.js'
 import { BandejaSolicitudes } from './pages/BandejaSolicitudes.jsx'
 import { Catalogo } from './pages/Catalogo.jsx'
 import { ConstanciaEntrega } from './pages/ConstanciaEntrega.jsx'
+import { HistorialEstudiante } from './pages/HistorialEstudiante.jsx'
 import { DetalleEquipoCatalogo } from './pages/DetalleEquipoCatalogo.jsx'
 import { EquipoDetalle } from './pages/EquipoDetalle.jsx'
 import { EquipoFormulario } from './pages/EquipoFormulario.jsx'
@@ -27,6 +29,7 @@ import { MisSolicitudes } from './pages/MisSolicitudes.jsx'
 import { PaginaNoEncontrada } from './pages/PaginaNoEncontrada.jsx'
 import { PrestamosVigentes } from './pages/PrestamosVigentes.jsx'
 import { RecuperarAcceso } from './pages/RecuperarAcceso.jsx'
+import { RegistrarDevolucion } from './pages/RegistrarDevolucion.jsx'
 import { RegistrarEntrega } from './pages/RegistrarEntrega.jsx'
 import { RegistroEncargado } from './pages/RegistroEncargado.jsx'
 import { RegistroEstudiante } from './pages/RegistroEstudiante.jsx'
@@ -34,7 +37,6 @@ import { ListaEspera, MisReservas, Reservas } from './pages/Reservas.jsx'
 import { RestablecerContrasena } from './pages/RestablecerContrasena.jsx'
 import { SolicitudFormulario } from './pages/SolicitudFormulario.jsx'
 import { VerificarCuenta } from './pages/VerificarCuenta.jsx'
-import Devoluciones from './pages/devoluciones.jsx'
 import './styles/base.css'
 import './styles/layout.css'
 import './styles/componentes.css'
@@ -42,6 +44,7 @@ import './styles/reservas.css'
 import './styles/catalogo.css'
 import './styles/cuenta.css'
 import './styles/prestamos.css'
+import './styles/devoluciones.css'
 
 const ENCARGADO = ['encargado']
 const ESTUDIANTE = ['estudiante']
@@ -122,207 +125,214 @@ export default function App() {
             <ReservaProvider>
               <CatalogoProvider>
                 <PrestamosProvider>
-                  <Routes>
-                    <Route path="/" element={<Raiz />} />
+                  <DevolucionesProvider>
+                    <Routes>
+                      <Route path="/" element={<Raiz />} />
 
-                    {/* HU-1: acceso */}
-                    {PUBLICAS.map(({ ruta, vista }) => (
+                      {/* HU-1: acceso */}
+                      {PUBLICAS.map(({ ruta, vista }) => (
+                        <Route
+                          key={ruta}
+                          path={ruta}
+                          element={<SoloVisitante>{vista}</SoloVisitante>}
+                        />
+                      ))}
                       <Route
-                        key={ruta}
-                        path={ruta}
-                        element={<SoloVisitante>{vista}</SoloVisitante>}
+                        path="/verificar"
+                        element={
+                          <MarcoPublico>
+                            <VerificarCuenta />
+                          </MarcoPublico>
+                        }
                       />
-                    ))}
-                    <Route
-                      path="/verificar"
-                      element={
-                        <MarcoPublico>
-                          <VerificarCuenta />
-                        </MarcoPublico>
-                      }
-                    />
-                    <Route
-                      path="/mi-cuenta"
-                      element={
-                        <ConSesion>
-                          <MiCuenta />
-                        </ConSesion>
-                      }
-                    />
-
-                    {/* HU-2: inventario */}
-                    <Route
-                      path="/inventario"
-                      element={
-                        <Encargado>
-                          <InventarioLista />
-                        </Encargado>
-                      }
-                    />
-                    <Route
-                      path="/inventario/nuevo"
-                      element={
-                        <Encargado>
-                          <EquipoFormulario />
-                        </Encargado>
-                      }
-                    />
-                    <Route
-                      path="/inventario/:equipoId"
-                      element={
-                        <Encargado>
-                          <EquipoDetalle />
-                        </Encargado>
-                      }
-                    />
-                    <Route
-                      path="/inventario/:equipoId/editar"
-                      element={
-                        <Encargado>
-                          <EquipoFormulario />
-                        </Encargado>
-                      }
-                    />
-
-                    {/* HU-3: catálogo y solicitud */}
-                    <Route
-                      path="/catalogo"
-                      element={
-                        <MarcoSegunRol>
-                          <Catalogo />
-                        </MarcoSegunRol>
-                      }
-                    />
-                    <Route path="/catalogo/:equipoId" element={<DetalleSegunRol />} />
-                    <Route
-                      path="/catalogo/:equipoId/solicitar"
-                      element={
-                        <Estudiante>
-                          <SolicitudFormulario />
-                        </Estudiante>
-                      }
-                    />
-                    <Route
-                      path="/mis-solicitudes"
-                      element={
-                        <Estudiante>
-                          <MisSolicitudes />
-                        </Estudiante>
-                      }
-                    />
-
-                    {/* HU-4: aprobación y entrega */}
-                    <Route
-                      path="/solicitudes"
-                      element={
-                        <Encargado>
-                          <BandejaSolicitudes />
-                        </Encargado>
-                      }
-                    />
-                    <Route
-                      path="/entregas/:solicitudId"
-                      element={
-                        <Encargado>
-                          <RegistrarEntrega />
-                        </Encargado>
-                      }
-                    />
-                    <Route
-                      path="/constancias/:codigo"
-                      element={
-                        <ConSesion>
-                          <ConstanciaEntrega />
-                        </ConSesion>
-                      }
-                    />
-                    <Route
-                      path="/prestamos"
-                      element={
-                        <Encargado>
-                          <PrestamosVigentes key="vigentes" />
-                        </Encargado>
-                      }
-                    />
-                    <Route
-                      path="/vencidos"
-                      element={
-                        <Encargado>
-                          <PrestamosVigentes key="vencidos" soloVencidos />
-                        </Encargado>
-                      }
-                    />
-
-                    {/* HU-5: devoluciones */}
-                    <Route
-                      path="/devoluciones"
-                      element={
-                        <Encargado>
-                          <Devoluciones />
-                        </Encargado>
-                      }
-                    />
-                    <Route
-                      path="/mi-deuda"
-                      element={
-                        <ConSesion>
-                          <PendienteDeOtraHistoria
-                            titulo="Mi deuda"
-                            historia="HU-5 — Devoluciones"
-                          />
-                        </ConSesion>
-                      }
-                    />
-
-                    {/* HU-6: reservas */}
-                    <Route
-                      path="/reservas"
-                      element={
-                        <ConSesion>
-                          <Reservas />
-                        </ConSesion>
-                      }
-                    />
-                    <Route
-                      path="/mis-reservas"
-                      element={
-                        <ConSesion>
-                          <MisReservas />
-                        </ConSesion>
-                      }
-                    />
-                    <Route
-                      path="/lista-espera"
-                      element={
-                        <Encargado>
-                          <ListaEspera />
-                        </Encargado>
-                      }
-                    />
-
-                    {/* HU-7 */}
-                    {OTRAS_HISTORIAS.map(({ ruta, titulo, historia }) => (
                       <Route
-                        key={ruta}
-                        path={ruta}
+                        path="/mi-cuenta"
+                        element={
+                          <ConSesion>
+                            <MiCuenta />
+                          </ConSesion>
+                        }
+                      />
+
+                      {/* HU-2: inventario */}
+                      <Route
+                        path="/inventario"
                         element={
                           <Encargado>
-                            <PendienteDeOtraHistoria titulo={titulo} historia={historia} />
+                            <InventarioLista />
                           </Encargado>
                         }
                       />
-                    ))}
+                      <Route
+                        path="/inventario/nuevo"
+                        element={
+                          <Encargado>
+                            <EquipoFormulario />
+                          </Encargado>
+                        }
+                      />
+                      <Route
+                        path="/inventario/:equipoId"
+                        element={
+                          <Encargado>
+                            <EquipoDetalle />
+                          </Encargado>
+                        }
+                      />
+                      <Route
+                        path="/inventario/:equipoId/editar"
+                        element={
+                          <Encargado>
+                            <EquipoFormulario />
+                          </Encargado>
+                        }
+                      />
 
-                    <Route
-                      path="*"
-                      element={
-                        <MarcoSegunRol>
-                          <PaginaNoEncontrada />
-                        </MarcoSegunRol>
-                      }
-                    />
-                  </Routes>
-                  <Notificaciones />
+                      {/* HU-3: catálogo y solicitud */}
+                      <Route
+                        path="/catalogo"
+                        element={
+                          <MarcoSegunRol>
+                            <Catalogo />
+                          </MarcoSegunRol>
+                        }
+                      />
+                      <Route path="/catalogo/:equipoId" element={<DetalleSegunRol />} />
+                      <Route
+                        path="/catalogo/:equipoId/solicitar"
+                        element={
+                          <Estudiante>
+                            <SolicitudFormulario />
+                          </Estudiante>
+                        }
+                      />
+                      <Route
+                        path="/mis-solicitudes"
+                        element={
+                          <Estudiante>
+                            <MisSolicitudes />
+                          </Estudiante>
+                        }
+                      />
+
+                      {/* HU-4: aprobación y entrega */}
+                      <Route
+                        path="/solicitudes"
+                        element={
+                          <Encargado>
+                            <BandejaSolicitudes />
+                          </Encargado>
+                        }
+                      />
+                      <Route
+                        path="/entregas/:solicitudId"
+                        element={
+                          <Encargado>
+                            <RegistrarEntrega />
+                          </Encargado>
+                        }
+                      />
+                      <Route
+                        path="/constancias/:codigo"
+                        element={
+                          <ConSesion>
+                            <ConstanciaEntrega />
+                          </ConSesion>
+                        }
+                      />
+                      <Route
+                        path="/prestamos"
+                        element={
+                          <Encargado>
+                            <PrestamosVigentes key="vigentes" />
+                          </Encargado>
+                        }
+                      />
+                      <Route
+                        path="/vencidos"
+                        element={
+                          <Encargado>
+                            <PrestamosVigentes key="vencidos" soloVencidos />
+                          </Encargado>
+                        }
+                      />
+
+                      {/* HU-5: devoluciones */}
+                      <Route
+                        path="/devoluciones"
+                        element={
+                          <Encargado>
+                            <RegistrarDevolucion />
+                          </Encargado>
+                        }
+                      />
+                      <Route
+                        path="/mi-deuda"
+                        element={
+                          <Estudiante>
+                            <HistorialEstudiante propio />
+                          </Estudiante>
+                        }
+                      />
+                      <Route
+                        path="/estudiantes/:estudianteId"
+                        element={
+                          <Encargado>
+                            <HistorialEstudiante key="encargado" />
+                          </Encargado>
+                        }
+                      />
+
+                      {/* HU-6: reservas */}
+                      <Route
+                        path="/reservas"
+                        element={
+                          <ConSesion>
+                            <Reservas />
+                          </ConSesion>
+                        }
+                      />
+                      <Route
+                        path="/mis-reservas"
+                        element={
+                          <ConSesion>
+                            <MisReservas />
+                          </ConSesion>
+                        }
+                      />
+                      <Route
+                        path="/lista-espera"
+                        element={
+                          <Encargado>
+                            <ListaEspera />
+                          </Encargado>
+                        }
+                      />
+
+                      {/* HU-7 */}
+                      {OTRAS_HISTORIAS.map(({ ruta, titulo, historia }) => (
+                        <Route
+                          key={ruta}
+                          path={ruta}
+                          element={
+                            <Encargado>
+                              <PendienteDeOtraHistoria titulo={titulo} historia={historia} />
+                            </Encargado>
+                          }
+                        />
+                      ))}
+
+                      <Route
+                        path="*"
+                        element={
+                          <MarcoSegunRol>
+                            <PaginaNoEncontrada />
+                          </MarcoSegunRol>
+                        }
+                      />
+                    </Routes>
+                    <Notificaciones />
+                  </DevolucionesProvider>
                 </PrestamosProvider>
               </CatalogoProvider>
             </ReservaProvider>

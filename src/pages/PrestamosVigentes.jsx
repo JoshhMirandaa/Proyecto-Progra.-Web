@@ -115,7 +115,9 @@ function GrupoPrestamos({ grupo, prestamos }) {
                     <p className="sm suave">{p.equipoNombre}</p>
                   </td>
                   <td>
-                    <span className="tabla-nombre">{p.estudianteNombre}</span>
+                    <Link to={`/estudiantes/${p.estudianteId}`} className="tabla-nombre">
+                      {p.estudianteNombre}
+                    </Link>
                     <p className="sm suave">{p.cursoNombre}</p>
                   </td>
                   <td className="codigo sin-corte">
@@ -135,7 +137,18 @@ function GrupoPrestamos({ grupo, prestamos }) {
                       >
                         Constancia
                       </Link>
-                      <Link to="/devoluciones" className="boton boton--sm boton--contorno">
+                      {p.vigencia.tipo !== 'vencido' && (
+                        <Link
+                          to={`/devoluciones?codigo=${p.codigoPrestamo}&accion=renovar`}
+                          className="boton boton--sm boton--neutro"
+                        >
+                          Renovar
+                        </Link>
+                      )}
+                      <Link
+                        to={`/devoluciones?codigo=${p.codigoPrestamo}`}
+                        className="boton boton--sm boton--contorno"
+                      >
                         Registrar devolución
                       </Link>
                     </div>

@@ -65,6 +65,9 @@ export function MarcoEstudiante({ children }) {
               <NavLink to="/reservas" className={activo}>
                 Calendario
               </NavLink>
+              <NavLink to="/mi-deuda" className={activo}>
+                Mi deuda
+              </NavLink>
             </>
           )}
         </nav>

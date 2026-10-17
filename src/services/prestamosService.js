@@ -24,6 +24,7 @@ import {
   cursoPorCodigo,
   etiquetaSolicitud,
   formatearFecha,
+  hoyISO,
   proximoRangoLibre,
   seSolapan,
   unidadesLibresEnRango,
@@ -168,13 +169,14 @@ export async function listarBandeja(filtros = {}) {
 /** Contadores del menú lateral y de la barra superior del panel. */
 export async function obtenerContadores() {
   await esperar(40)
-  const hoy = new Date().toISOString().slice(0, 10)
+  const hoy = hoyISO()
   const solicitudes = leerSolicitudes()
   const vigentes = solicitudes.filter((s) => s.estado === 'en_prestamo')
   return {
     pendientes: solicitudes.filter((s) => s.estado === 'pendiente').length,
     vigentes: vigentes.length,
     vencidos: vigentes.filter((s) => vigenciaDe(s.fechaFin, hoy).tipo === 'vencido').length,
+    vencenHoy: vigentes.filter((s) => vigenciaDe(s.fechaFin, hoy).tipo === 'hoy').length,
   }
 }
 
