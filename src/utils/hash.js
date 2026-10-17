@@ -50,11 +50,11 @@ function sha256Respaldo(bytes) {
     let [a, b, c, d, e, f, g, hh] = h
     for (let t = 0; t < 64; t++) {
       const S1 = rot(e, 6) ^ rot(e, 11) ^ rot(e, 25)
-      const ch = (e & f) ^ (~e & g)
-      const t1 = (hh + S1 + ch + K[t] + w[t]) >>> 0
+      const eleccion = (e & f) ^ (~e & g)
+      const t1 = (hh + S1 + eleccion + K[t] + w[t]) >>> 0
       const S0 = rot(a, 2) ^ rot(a, 13) ^ rot(a, 22)
-      const maj = (a & b) ^ (a & c) ^ (b & c)
-      const t2 = (S0 + maj) >>> 0
+      const mayoria = (a & b) ^ (a & c) ^ (b & c)
+      const t2 = (S0 + mayoria) >>> 0
       hh = g
       g = f
       f = e
