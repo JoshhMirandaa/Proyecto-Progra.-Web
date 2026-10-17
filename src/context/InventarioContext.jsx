@@ -70,6 +70,8 @@ export function InventarioProvider({ children }) {
       // consultas
       cambiarFiltros: (cambios) => dispatch({ tipo: 'CAMBIAR_FILTROS', filtros: cambios }),
       limpiarFiltros: () => dispatch({ tipo: 'LIMPIAR_FILTROS' }),
+      /** Otra historia cambió unidades (la entrega de la HU-4): recarga lista y resumen. */
+      refrescar: () => dispatch({ tipo: 'ESCRITURA_OK' }),
       obtenerEquipo: servicio.obtenerEquipo,
       obtenerFichaPublica: servicio.obtenerFichaPublica,
       listarCodigosOcupados: servicio.listarCodigosOcupados,
@@ -122,7 +124,8 @@ export function InventarioProvider({ children }) {
       cambiarEstadoUnidad: (id, datos) =>
         escribir(
           () => servicio.cambiarEstadoUnidad(id, { ...datos, usuarioId: usuario.id }),
-          (u) => `La unidad ${u.codigoInventario} pasó a ${etiquetaEstado(u.estado).toLowerCase()}.`,
+          (u) =>
+            `La unidad ${u.codigoInventario} pasó a ${etiquetaEstado(u.estado).toLowerCase()}.`,
         ),
 
       // mantenimiento de la data de prueba

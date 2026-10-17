@@ -69,6 +69,7 @@ export function Confirmacion({
   mensaje,
   detalle,
   textoConfirmar = 'Eliminar',
+  textoTrabajando = 'Eliminando…',
   trabajando = false,
   alConfirmar,
   alCerrar,
@@ -88,7 +89,7 @@ export function Confirmacion({
           Cancelar
         </button>
         <button type="button" className="boton boton--peligro" onClick={alConfirmar} disabled={trabajando}>
-          {trabajando ? 'Eliminando…' : textoConfirmar}
+          {trabajando ? textoTrabajando : textoConfirmar}
         </button>
       </div>
     </Modal>

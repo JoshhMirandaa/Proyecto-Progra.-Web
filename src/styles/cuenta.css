@@ -1,0 +1,413 @@
+/* HU-1 · Cuenta y acceso. Usa los tokens de base.css; no define colores propios. */
+
+/* ------------------------------------------------------------- barra superior */
+
+.menu-usuario {
+  display: flex;
+  align-items: center;
+  gap: var(--e-3);
+}
+
+a.usuario {
+  text-decoration: none;
+}
+
+a.usuario:hover span:first-child {
+  color: var(--tinta);
+  text-decoration: underline;
+}
+
+.pie-direccion {
+  margin-top: 0.2rem;
+  color: #7f918f;
+}
+
+/* ------------------------------------------------- tarjetas de acceso (1.2–1.5) */
+
+.tarjeta-acceso {
+  width: min(100%, 460px);
+  margin: var(--e-4) auto var(--e-6);
+}
+
+.tarjeta-acceso--ancha {
+  width: min(100%, 720px);
+}
+
+.tarjeta-acceso > .aviso {
+  margin-bottom: var(--e-4);
+}
+
+.tarjeta-acceso h1 {
+  font-size: var(--t-xl);
+}
+
+.sub-acceso {
+  margin: 0.4rem 0 var(--e-5);
+  color: var(--tinta-media);
+  font-size: var(--t-sm);
+}
+
+.tarjeta-acceso form > .aviso {
+  margin-bottom: var(--e-4);
+}
+
+.campos-acceso {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.campos-acceso .campo + .campo {
+  margin-top: var(--e-4);
+}
+
+.fila-acceso {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--e-2);
+  margin: var(--e-4) 0 var(--e-5);
+  font-size: var(--t-sm);
+}
+
+.pie-acceso {
+  margin-top: var(--e-5);
+  text-align: center;
+  font-size: var(--t-sm);
+  color: var(--tinta-media);
+}
+
+.centrado {
+  text-align: center;
+}
+
+.opcion--larga {
+  align-items: flex-start;
+  margin-top: var(--e-5);
+  line-height: 1.45;
+}
+
+.opcion--larga input {
+  margin-top: 0.15rem;
+}
+
+.acciones-acceso {
+  margin-top: var(--e-5);
+  padding-top: var(--e-4);
+  border-top: 1px solid var(--linea);
+}
+
+.cuentas-prueba {
+  margin-top: var(--e-5);
+  padding: var(--e-3) var(--e-4);
+  border: 1px dashed var(--linea-fuerte);
+  border-radius: var(--radio-control);
+  font-size: var(--t-sm);
+  color: var(--tinta-media);
+}
+
+.cuentas-prueba summary {
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.cuentas-prueba ul {
+  margin: var(--e-2) 0 0;
+  padding-left: 1.1rem;
+}
+
+.cuentas-prueba code {
+  font-family: var(--mono);
+  font-size: 0.92em;
+}
+
+.exito-acceso {
+  display: grid;
+  justify-items: center;
+  gap: var(--e-3);
+  text-align: center;
+}
+
+.exito-acceso .aviso {
+  text-align: left;
+}
+
+.marca-exito {
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--disponible-tenue);
+  color: var(--disponible);
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+.marca-exito--sobre {
+  background: var(--petroleo-tenue);
+  color: var(--petroleo);
+}
+
+.pasos-recuperacion {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--e-3);
+  margin: 0 0 var(--e-5);
+  padding: 0;
+  list-style: none;
+}
+
+.pasos-recuperacion li {
+  width: 28px;
+  height: 28px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--linea-fuerte);
+  border-radius: 50%;
+  font-size: var(--t-sm);
+  font-weight: 600;
+  color: var(--tinta-suave);
+}
+
+.pasos-recuperacion li[data-hecho] {
+  border-color: var(--petroleo);
+  color: var(--petroleo);
+}
+
+.pasos-recuperacion li[aria-current='step'] {
+  border-color: var(--petroleo);
+  background: var(--petroleo);
+  color: #fff;
+}
+
+.fortaleza {
+  display: flex;
+  align-items: center;
+  gap: var(--e-3);
+  margin: 0.5rem 0 var(--e-4);
+  font-size: var(--t-sm);
+  font-weight: 600;
+}
+
+.fortaleza-barra {
+  position: relative;
+  flex: 1;
+  height: 6px;
+  border-radius: 3px;
+  background: var(--linea);
+  overflow: hidden;
+}
+
+.fortaleza-barra::after {
+  content: '';
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 33%;
+  background: var(--peligro);
+  transition: width 0.2s ease;
+}
+
+.fortaleza[data-puntaje='2'] .fortaleza-barra::after {
+  width: 66%;
+  background: var(--mantenimiento);
+}
+
+.fortaleza[data-puntaje='3'] .fortaleza-barra::after {
+  width: 100%;
+  background: var(--disponible);
+}
+
+.fortaleza[data-puntaje='1'] .fortaleza-texto {
+  color: var(--peligro);
+}
+
+.fortaleza[data-puntaje='2'] .fortaleza-texto {
+  color: var(--mantenimiento);
+}
+
+.fortaleza[data-puntaje='3'] .fortaleza-texto {
+  color: var(--disponible);
+}
+
+/* ----------------------------------------------------------- mi cuenta (1.6) */
+
+.rejilla-cuenta {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(300px, 1fr);
+  gap: var(--e-5);
+  align-items: start;
+}
+
+.rejilla-cuenta .panel-titulo {
+  margin-bottom: var(--e-4);
+}
+
+.columna-cuenta {
+  display: grid;
+  gap: var(--e-5);
+}
+
+.resumen-cuenta {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--e-3);
+  margin: 0;
+}
+
+.resumen-cuenta > div {
+  padding: var(--e-3);
+  border: 1px solid var(--linea);
+  border-radius: var(--radio-control);
+  text-align: center;
+}
+
+.resumen-cuenta dd {
+  margin: 0;
+  font-family: var(--mono);
+  font-size: var(--t-lg);
+  font-weight: 600;
+  order: -1;
+}
+
+.resumen-cuenta > div {
+  display: flex;
+  flex-direction: column;
+}
+
+.resumen-cuenta dt {
+  font-size: var(--t-xs);
+  color: var(--tinta-suave);
+}
+
+.resumen-cuenta > div[data-alerta] dd {
+  color: var(--peligro);
+}
+
+/* -------------------------------------------------------- páginas de error (1.7) */
+
+.pagina-error {
+  display: grid;
+  justify-items: center;
+  gap: var(--e-3);
+  max-width: 620px;
+  margin: var(--e-7) auto;
+  text-align: center;
+}
+
+.pagina-error .prosa {
+  margin: 0 auto;
+}
+
+.pagina-error-marca {
+  width: 52px;
+  height: 52px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--linea-fuerte);
+  border-radius: var(--radio-panel);
+  background: var(--panel);
+  font-size: var(--t-xl);
+  font-weight: 700;
+  color: var(--tinta-media);
+}
+
+.fila-centro {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--e-3);
+  margin-top: var(--e-3);
+}
+
+/* -------------------------------------------------------- inicio público (1.1) */
+
+.inicio {
+  display: grid;
+  gap: var(--e-7);
+}
+
+.inicio-portada {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  gap: var(--e-6);
+  align-items: center;
+  padding-top: var(--e-4);
+}
+
+.inicio-portada h1 {
+  font-size: clamp(1.75rem, 3.2vw, 2.6rem);
+  line-height: 1.12;
+  margin-bottom: var(--e-4);
+}
+
+.inicio-busqueda {
+  display: flex;
+  gap: var(--e-2);
+  margin-top: var(--e-5);
+  max-width: 560px;
+}
+
+.inicio-foto {
+  aspect-ratio: 520 / 300;
+  border: 1px solid var(--linea);
+  border-radius: var(--radio-panel);
+}
+
+.inicio .cabecera-vista {
+  align-items: center;
+}
+
+.inicio-pasos {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--e-4);
+  scroll-margin-top: var(--e-6);
+}
+
+.inicio-pasos h3 {
+  margin: var(--e-2) 0 0.3rem;
+}
+
+.inicio-paso-numero {
+  width: 28px;
+  height: 28px;
+  display: inline-grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--petroleo);
+  color: #fff;
+  font-weight: 600;
+  font-size: var(--t-sm);
+}
+
+.inicio-ayuda {
+  scroll-margin-top: var(--e-6);
+  font-size: var(--t-sm);
+  color: var(--tinta-media);
+}
+
+/* --------------------------------------------------------------- responsiva */
+
+@media (max-width: 960px) {
+  .rejilla-cuenta,
+  .inicio-portada {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .inicio-pasos {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 620px) {
+  .inicio-busqueda {
+    flex-direction: column;
+  }
+
+  .menu-usuario .boton {
+    padding-inline: 0.6rem;
+  }
+}

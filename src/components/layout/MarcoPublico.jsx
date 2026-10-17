@@ -1,40 +1,54 @@
-import { Link } from 'react-router-dom'
+import { Link, NavLink, useLocation } from 'react-router-dom'
 
-/** Marco de las vistas públicas (visitante sin sesión): ficha del equipo. */
+const activo = ({ isActive }) => (isActive ? 'activo' : undefined)
+
+/** Marco de las vistas públicas (visitante sin sesión): inicio, catálogo, acceso y ficha. */
 export function MarcoPublico({ children }) {
+  const { pathname } = useLocation()
+  const enInicio = pathname === '/'
+
   return (
     <div className="marco">
       <header className="barra">
-        <Link to="/inventario" className="marca">
+        <Link to="/" className="marca">
           <span className="marca-icono" aria-hidden="true" />
           <span className="marca-nombre">Almacén de Equipos</span>
         </Link>
 
         <nav className="barra-nav" aria-label="Navegación pública">
-          <a href="#inicio">Inicio</a>
-          <a href="#catalogo" className="activo">
+          <NavLink to="/" end className={activo}>
+            Inicio
+          </NavLink>
+          <NavLink to="/catalogo" className={activo}>
             Catálogo
-          </a>
-          <a href="#reglas">Reglas del préstamo</a>
-          <a href="#ayuda">Ayuda</a>
+          </NavLink>
+          <Link to="/#reglas">Reglas del préstamo</Link>
+          <Link to="/#ayuda">Ayuda</Link>
         </nav>
 
         <div className="barra-fin">
-          <a href="#ingresar" className="boton boton--contorno boton--sm">
+          <NavLink to="/login" className="boton boton--contorno boton--sm">
             Iniciar sesión
-          </a>
-          <a href="#crear-cuenta" className="boton boton--sm">
+          </NavLink>
+          <NavLink to="/registro" className="boton boton--sm">
             Crear cuenta
-          </a>
+          </NavLink>
         </div>
       </header>
 
       <main className="publico">{children}</main>
 
       <footer className="pie">
-        <p>
-          <strong>Almacén de Equipos</strong> · Facultad de Ingeniería
-        </p>
+        <div>
+          <p>
+            <strong>Almacén de Equipos</strong> · Facultad de Ingeniería
+          </p>
+          {enInicio && (
+            <p className="pie-direccion">
+              Universidad de Lima · Av. Javier Prado Este 4600, Santiago de Surco
+            </p>
+          )}
+        </div>
         <div className="pie-enlaces">
           <a href="#reglamento">Reglamento de préstamo</a>
           <span>almacen.equipos@ulima.edu.pe</span>

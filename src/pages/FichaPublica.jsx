@@ -35,8 +35,8 @@ export function FichaPublica() {
     return (
       <section className="panel">
         <EstadoVacio marca="□" titulo="Este equipo no está en el catálogo" descripcion={error}>
-          <Link to="/inventario" className="boton boton--contorno">
-            Ir al panel del encargado
+          <Link to="/catalogo" className="boton boton--contorno">
+            Volver al catálogo
           </Link>
         </EstadoVacio>
       </section>
@@ -60,9 +60,9 @@ export function FichaPublica() {
   return (
     <div>
       <nav className="migas" aria-label="Ruta">
-        <a href="#catalogo">Catálogo</a>
+        <Link to="/catalogo">Catálogo</Link>
         <span aria-hidden="true">/</span>
-        <a href="#categoria">{etiquetaCategoria(equipo.categoria)}</a>
+        <Link to={`/catalogo?cat=${equipo.categoria}`}>{etiquetaCategoria(equipo.categoria)}</Link>
         <span aria-hidden="true">/</span>
         <span>{equipo.nombre}</span>
       </nav>
@@ -98,7 +98,7 @@ export function FichaPublica() {
             <h1>{equipo.nombre}</h1>
             <p className="medio" style={{ marginTop: '0.35rem' }}>
               {equipo.marca} · {equipo.modelo} ·{' '}
-              <a href="#categoria">{etiquetaCategoria(equipo.categoria)}</a>
+              <Link to={`/catalogo?cat=${equipo.categoria}`}>{etiquetaCategoria(equipo.categoria)}</Link>
             </p>
 
             {equipo.descripcion && (

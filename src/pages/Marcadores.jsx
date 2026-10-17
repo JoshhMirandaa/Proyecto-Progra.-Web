@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import { EstadoVacio } from '../components/ui/Piezas.jsx'
 
-/** Rutas de otras historias: existen en la navegación pero no son de la HU-2. */
+/** Rutas de historias que aún no se integran: existen en la navegación del panel. */
 export function PendienteDeOtraHistoria({ titulo, historia }) {
   return (
     <div>
@@ -12,7 +12,7 @@ export function PendienteDeOtraHistoria({ titulo, historia }) {
         <EstadoVacio
           marca="□"
           titulo={`Esta vista pertenece a la ${historia}`}
-          descripcion="La HU-2 solo es dueña del inventario de equipos y unidades. Esta sección la implementa otro integrante del equipo."
+          descripcion="Esta sección la implementa otro integrante del equipo y todavía no está integrada."
         >
           <Link to="/inventario" className="boton boton--contorno">
             Volver al inventario
@@ -20,21 +20,5 @@ export function PendienteDeOtraHistoria({ titulo, historia }) {
         </EstadoVacio>
       </section>
     </div>
-  )
-}
-
-export function NoEncontrado() {
-  return (
-    <section className="panel">
-      <EstadoVacio
-        marca="□"
-        titulo="No encontramos esta página"
-        descripcion="Revisa la dirección o vuelve al inventario de equipos."
-      >
-        <Link to="/inventario" className="boton">
-          Ir al inventario
-        </Link>
-      </EstadoVacio>
-    </section>
   )
 }
