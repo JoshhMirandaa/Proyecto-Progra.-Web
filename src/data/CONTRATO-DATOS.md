@@ -137,3 +137,48 @@ panel. Son datos de las HU-3 a HU-7; la HU-2 solo los muestra.
 ```jsonc
 { "solicitudes": 12, "vencidos": 2, "devoluciones": 0, "reservas": 5, "listaEspera": 6, "usuarios": 15 }
 ```
+
+---
+
+## SolicitudPrestamo (dueño: HU-3)
+
+La HU-3 crea la solicitud y el estudiante la puede retirar mientras está `pendiente`.
+La HU-4 la aprueba o rechaza, asigna la unidad y registra la entrega; la HU-5 la cierra
+con la devolución. Los nombres de campos siguen el `db.json` del grupo.
+
+Archivo semilla de la primera entrega: `src/data/seed-solicitudes.json`.
+
+```jsonc
+{
+  "id": "SOL-0101",                 // "SOL-" + 4 dígitos, único
+  "estudianteId": "US-201",         // Usuario con rol "estudiante"
+  "equipoId": "EQ-001",             // Equipo publicable al momento de solicitar
+  "unidadId": null,                 // la asigna la HU-4 al aprobar
+  "fechaInicio": "2026-10-26",      // AAAA-MM-DD, no anterior a hoy, hasta 30 días de anticipación
+  "fechaFin": "2026-10-30",         // AAAA-MM-DD, posterior a fechaInicio
+  "curso": "IN324",                 // código de curso (catálogo CURSOS en domain/solicitudes.js)
+  "motivo": "Medición de señales…", // 20 a 500 caracteres
+  "estado": "pendiente",            // ver tabla
+  "motivoRechazo": "",              // lo llena la HU-4 al rechazar; visible para el estudiante
+  "codigoPrestamo": null,           // lo genera la HU-4 al registrar la entrega
+  "creadaEn": "2026-10-14T16:20:00.000Z",
+  "resueltaEn": null                // fecha de aprobación, rechazo o retiro
+}
+```
+
+| `estado`      | Se muestra como | Quién lo pone | ¿Ocupa una unidad? |
+|---------------|-----------------|---------------|--------------------|
+| `pendiente`   | Enviada         | HU-3          | No                 |
+| `aprobada`    | Aprobada        | HU-4          | Sí                 |
+| `rechazada`   | Rechazada       | HU-4          | No                 |
+| `en_prestamo` | Entregada       | HU-4          | Sí                 |
+| `devuelta`    | Devuelta        | HU-5          | No                 |
+| `retirada`    | Retirada        | HU-3 (estudiante) | No             |
+
+**Duración.** Se cuenta como en el mockup 3.3: del 16/09 al 21/09 son 5 días
+(`fechaFin − fechaInicio`). No puede superar `condicionesPrestamo.duracionMaximaDias` del
+equipo. *Pendiente de acordar con la HU-6, que hoy cuenta los días de forma inclusiva.*
+
+**Disponibilidad en un rango.** Una unidad está libre si su estado en el inventario es
+`disponible` y no tiene, en esas fechas (inclusivas), una solicitud `aprobada` o
+`en_prestamo` ni una reserva confirmada de la HU-6.

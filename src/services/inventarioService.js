@@ -109,7 +109,10 @@ export async function listarEquipos(filtros = {}) {
   } = filtros
 
   let resultado = equipos.map((equipo) =>
-    derivarEquipo(equipo, unidades.filter((u) => u.equipoId === equipo.id)),
+    derivarEquipo(
+      equipo,
+      unidades.filter((u) => u.equipoId === equipo.id),
+    ),
   )
 
   if (categoria !== 'todas') resultado = resultado.filter((e) => e.categoria === categoria)
@@ -183,6 +186,32 @@ export async function obtenerEquipo(id) {
     .filter((u) => u.equipoId === id)
     .sort((a, b) => a.codigoInventario.localeCompare(b.codigoInventario, 'es'))
   return { equipo: derivarEquipo(equipo, suyas), unidades: suyas }
+}
+
+/**
+ * Lectura para otras historias (por ejemplo, el catálogo de la HU-3): cada equipo con
+ * sus campos derivados y sus unidades, sin datos internos como observaciones o historial.
+ * Solo lee; ninguna otra historia escribe sobre equipos o unidades.
+ */
+export async function listarEquiposConUnidades({ soloPublicados = false } = {}) {
+  await esperar()
+  const { equipos, unidades } = leerAlmacen()
+  return equipos
+    .map((base) => {
+      const suyas = unidades.filter((u) => u.equipoId === base.id)
+      return {
+        ...derivarEquipo(base, suyas),
+        unidades: suyas
+          .map((u) => ({
+            id: u.id,
+            codigoInventario: u.codigoInventario,
+            estado: u.estado,
+            ubicacion: u.ubicacion,
+          }))
+          .sort((a, b) => a.codigoInventario.localeCompare(b.codigoInventario, 'es')),
+      }
+    })
+    .filter((equipo) => !soloPublicados || equipo.esPublicable)
 }
 
 /** Ficha pública: solo equipos publicables, y sin los datos internos de la unidad. */
@@ -380,7 +409,12 @@ export async function eliminarUnidad(id) {
   return { id, codigoInventario: unidad.codigoInventario }
 }
 
-export async function cambiarEstadoUnidad(id, { estadoNuevo, motivo, usuarioId }) {
+/**
+ * Cambia el estado de una unidad y lo deja en su historial. Además del encargado desde el
+ * inventario, la usa la HU-4 al registrar una entrega (pasa a «prestada» con el código del
+ * préstamo) y la HU-5 al registrar la devolución.
+ */
+export async function cambiarEstadoUnidad(id, { estadoNuevo, motivo, usuarioId, prestamoVigente }) {
   await esperar()
   const almacen = leerAlmacen()
   const indice = almacen.unidades.findIndex((u) => u.id === id)
@@ -394,7 +428,8 @@ export async function cambiarEstadoUnidad(id, { estadoNuevo, motivo, usuarioId }
     ...unidad,
     estado: estadoNuevo,
     // al salir de "prestada" el préstamo deja de estar vigente para el inventario
-    prestamoVigente: estadoNuevo === 'prestada' ? unidad.prestamoVigente : null,
+    prestamoVigente:
+      estadoNuevo === 'prestada' ? (prestamoVigente ?? unidad.prestamoVigente) : null,
     historialEstados: [
       ...unidad.historialEstados,
       {

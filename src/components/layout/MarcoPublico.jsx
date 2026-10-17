@@ -1,25 +1,27 @@
 import { Link } from 'react-router-dom'
+import { SelectorPerfilDemo } from './SelectorPerfilDemo.jsx'
 
 /** Marco de las vistas públicas (visitante sin sesión): ficha del equipo. */
 export function MarcoPublico({ children }) {
   return (
     <div className="marco">
       <header className="barra">
-        <Link to="/inventario" className="marca">
+        <Link to="/" className="marca">
           <span className="marca-icono" aria-hidden="true" />
           <span className="marca-nombre">Almacén de Equipos</span>
         </Link>
 
         <nav className="barra-nav" aria-label="Navegación pública">
           <a href="#inicio">Inicio</a>
-          <a href="#catalogo" className="activo">
+          <Link to="/catalogo" className="activo">
             Catálogo
-          </a>
+          </Link>
           <a href="#reglas">Reglas del préstamo</a>
           <a href="#ayuda">Ayuda</a>
         </nav>
 
         <div className="barra-fin">
+          <SelectorPerfilDemo />
           <a href="#ingresar" className="boton boton--contorno boton--sm">
             Iniciar sesión
           </a>

@@ -2,6 +2,7 @@ import { NavLink, Link } from 'react-router-dom'
 import { useInventario } from '../../context/InventarioContext.jsx'
 import { useSesion } from '../../context/SesionContext.jsx'
 import { ALMACEN } from '../../domain/catalogos.js'
+import { SelectorPerfilDemo } from './SelectorPerfilDemo.jsx'
 
 const SINCRONIZACION = '14/09/2026 08:05'
 
@@ -53,6 +54,7 @@ export function MarcoEncargado({ children }) {
         </form>
 
         <div className="barra-fin">
+          <SelectorPerfilDemo />
           <span className="pendientes">
             Solicitudes pendientes
             <span className="contador">{externos?.solicitudes ?? 0}</span>
