@@ -1,0 +1,408 @@
+.reservas-pestanas a {
+  padding: 0 0 0.6rem;
+  border-bottom: 2px solid transparent;
+  color: var(--tinta-media);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.reservas-pestanas a:hover {
+  color: var(--tinta);
+}
+
+.reservas-pestanas a[aria-current='page'] {
+  border-bottom-color: var(--petroleo);
+  color: var(--petroleo);
+  font-weight: 500;
+}
+
+.reservas-columnas {
+  display: grid;
+  grid-template-columns: minmax(0, 1.55fr) minmax(300px, 0.85fr);
+  align-items: start;
+  gap: var(--e-5);
+}
+
+.reservas-calendario {
+  min-width: 0;
+  padding: var(--e-5);
+}
+
+.reservas-seccion-cabecera,
+.reservas-lista-cabecera {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--e-4);
+}
+
+.reservas-seccion-cabecera h2,
+.reservas-lista-cabecera h2 {
+  font-size: var(--t-lg);
+}
+
+.reservas-seccion-cabecera .suave {
+  margin-top: 0.4rem;
+}
+
+.reservas-mes {
+  display: flex;
+  align-items: center;
+  gap: var(--e-3);
+  text-transform: capitalize;
+  white-space: nowrap;
+}
+
+.reservas-mes strong {
+  min-width: 8.5rem;
+  text-align: center;
+}
+
+.reservas-filtro-equipo {
+  max-width: 420px;
+  margin: var(--e-5) 0;
+}
+
+.calendario-reservas {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  border-top: 1px solid var(--linea);
+  border-left: 1px solid var(--linea);
+}
+
+.calendario-dia-semana {
+  padding: 0.45rem 0.2rem;
+  background: var(--panel-hundido);
+  border-right: 1px solid var(--linea);
+  border-bottom: 1px solid var(--linea);
+  color: var(--tinta-suave);
+  font-size: var(--t-xs);
+  font-weight: 600;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.calendario-celda {
+  min-height: 92px;
+  padding: 0.35rem;
+  border-right: 1px solid var(--linea);
+  border-bottom: 1px solid var(--linea);
+  background: var(--panel);
+}
+
+.calendario-celda--fuera {
+  background: var(--panel-hundido);
+}
+
+.calendario-celda--fuera .calendario-numero,
+.calendario-celda--pasada .calendario-numero {
+  color: var(--tinta-suave);
+}
+
+.calendario-numero {
+  display: block;
+  margin-bottom: 0.3rem;
+  font-size: var(--t-sm);
+  font-variant-numeric: tabular-nums;
+}
+
+.calendario-estados {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.ocupacion {
+  display: block;
+  overflow: hidden;
+  padding: 0.05rem 0.2rem;
+  border-radius: 3px;
+  font-size: 0.65rem;
+  line-height: 1.45;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.ocupacion--libre {
+  background: var(--disponible-tenue);
+  color: var(--disponible);
+}
+
+.ocupacion--reservada {
+  background: var(--mantenimiento-tenue);
+  color: #8a5c14;
+}
+
+.ocupacion--prestada {
+  background: var(--prestada-tenue);
+  color: var(--prestada);
+}
+
+.ocupacion--sin-unidades {
+  background: var(--baja-tenue);
+  color: var(--baja);
+}
+
+.reservas-leyenda {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--e-4);
+  margin-top: var(--e-4);
+  color: var(--tinta-media);
+  font-size: var(--t-sm);
+}
+
+.reservas-leyenda span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.leyenda-punto {
+  width: 0.65rem;
+  height: 0.65rem;
+  border-radius: 50%;
+}
+
+.leyenda-punto--libre {
+  background: var(--disponible);
+}
+
+.leyenda-punto--reservada {
+  background: var(--mantenimiento);
+}
+
+.leyenda-punto--prestada {
+  background: var(--prestada);
+}
+
+.reservas-formulario h2 {
+  margin-bottom: 0.5rem;
+  font-size: var(--t-lg);
+}
+
+.reservas-intro {
+  margin-bottom: var(--e-5);
+}
+
+.reservas-formulario form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--e-4);
+}
+
+.reservas-formulario .campo + .campo,
+.reservas-formulario .campo-fila + .campo {
+  margin-top: 0;
+}
+
+.reservas-fechas {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--e-3);
+}
+
+.reservas-limite {
+  margin-top: calc(var(--e-3) * -1);
+  color: var(--tinta-suave);
+  font-size: var(--t-sm);
+}
+
+.reservas-error {
+  margin-bottom: var(--e-4);
+}
+
+.reservas-lista-panel {
+  overflow: hidden;
+}
+
+.reservas-lista-cabecera {
+  align-items: center;
+  padding: var(--e-5);
+  border-bottom: 1px solid var(--linea);
+}
+
+.reservas-filtro-estado {
+  display: flex;
+  align-items: center;
+  gap: var(--e-3);
+}
+
+.reservas-filtro-estado .rotulo {
+  white-space: nowrap;
+}
+
+.reservas-filtro-estado .entrada {
+  min-width: 180px;
+}
+
+.reservas-lista,
+.espera-lista {
+  display: grid;
+  gap: var(--e-3);
+  padding: var(--e-5);
+}
+
+.reserva-tarjeta {
+  padding: var(--e-4);
+  border: 1px solid var(--linea);
+  border-radius: var(--radio-panel);
+  background: var(--panel);
+}
+
+.reserva-tarjeta-cabecera {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--e-3);
+}
+
+.reserva-equipo {
+  font-weight: 600;
+}
+
+.reserva-tarjeta .codigo {
+  display: inline-block;
+  margin-top: 0.2rem;
+  color: var(--tinta-suave);
+  font-size: var(--t-sm);
+}
+
+.reserva-fechas {
+  margin-top: var(--e-3);
+  color: var(--tinta-media);
+}
+
+.reserva-motivo {
+  margin-top: var(--e-2);
+  color: var(--tinta-suave);
+  font-size: var(--t-sm);
+  white-space: pre-wrap;
+}
+
+.reserva-solicitud {
+  margin-top: var(--e-3);
+  color: var(--tinta-media);
+  font-size: var(--t-sm);
+}
+
+.reserva-estado {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  padding: 0.2rem 0.55rem;
+  border-radius: 99px;
+  background: var(--petroleo-tenue);
+  color: var(--petroleo);
+  font-size: var(--t-xs);
+  font-weight: 600;
+}
+
+.reserva-estado--en_espera {
+  background: var(--mantenimiento-tenue);
+  color: #8a5c14;
+}
+
+.reserva-estado--convertida {
+  background: var(--prestada-tenue);
+  color: var(--prestada);
+}
+
+.reserva-estado--cancelada {
+  background: var(--baja-tenue);
+  color: var(--baja);
+}
+
+.reserva-tarjeta .boton--texto {
+  margin-top: var(--e-3);
+  padding-left: 0;
+}
+
+.espera-tarjeta {
+  display: grid;
+  grid-template-columns: 42px minmax(0, 1fr);
+  align-items: start;
+  gap: var(--e-4);
+}
+
+.espera-posicion {
+  display: grid;
+  width: 40px;
+  height: 40px;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--petroleo-tenue);
+  color: var(--petroleo);
+  font-size: var(--t-lg);
+  font-weight: 600;
+}
+
+.espera-contenido {
+  min-width: 0;
+}
+
+@media (max-width: 1100px) {
+  .reservas-columnas {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .reservas-formulario {
+    max-width: none;
+  }
+}
+
+@media (max-width: 620px) {
+  .reservas-calendario {
+    padding: var(--e-3);
+  }
+
+  .reservas-seccion-cabecera {
+    flex-direction: column;
+  }
+
+  .reservas-mes {
+    align-self: stretch;
+    justify-content: space-between;
+  }
+
+  .calendario-celda {
+    min-height: 70px;
+    padding: 0.2rem;
+  }
+
+  .calendario-dia-semana {
+    font-size: 0.6rem;
+  }
+
+  .ocupacion {
+    font-size: 0.56rem;
+  }
+
+  .reservas-lista-cabecera,
+  .reservas-filtro-estado {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .reservas-lista-cabecera {
+    gap: var(--e-3);
+  }
+
+  .reservas-filtro-estado .entrada {
+    min-width: 0;
+  }
+
+  .reserva-tarjeta-cabecera {
+    flex-direction: column;
+  }
+
+  .espera-tarjeta {
+    grid-template-columns: 32px minmax(0, 1fr);
+    gap: var(--e-3);
+  }
+
+  .espera-posicion {
+    width: 32px;
+    height: 32px;
+    font-size: var(--t-base);
+  }
+}
