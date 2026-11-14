@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Link, Navigate, useNavigate } from 'react-router-dom'
 import { Campo, atributosControl } from '../components/ui/Campo.jsx'
+import { useNotificacion } from '../context/NotificacionContext.jsx'
 import { useSesion } from '../context/SesionContext.jsx'
 import {
   CARRERAS,
@@ -14,6 +15,7 @@ import { useFormulario } from '../hooks/useFormulario.js'
 /** Vista 1.3 — Registro de estudiante. */
 export function RegistroEstudiante() {
   const { conSesion, rol, registrarEstudiante } = useSesion()
+  const notificacion = useNotificacion()
   const navegar = useNavigate()
   const [duplicado, setDuplicado] = useState(null)
   const [creada, setCreada] = useState(null)
@@ -38,9 +40,14 @@ export function RegistroEstudiante() {
   const crear = async (datos) => {
     setDuplicado(null)
     const r = await registrarEstudiante(datos)
-    if (r.ok) setCreada(r)
-    else if (r.tipo === 'duplicado') setDuplicado(datos.correo.trim().toLowerCase())
-    else setDuplicado(null)
+    if (r.ok) {
+      notificacion.exito('¡Cuenta creada y verificada! Ya puedes iniciar sesión.')
+      setCreada(r)
+    } else if (r.tipo === 'duplicado') {
+      setDuplicado(datos.correo.trim().toLowerCase())
+    } else {
+      setDuplicado(null)
+    }
   }
 
   if (creada) {
@@ -50,14 +57,15 @@ export function RegistroEstudiante() {
           <div className="marca-exito" aria-hidden="true">
             ✓
           </div>
-          <h1>Cuenta creada</h1>
+          <h1>Cuenta creada y verificada</h1>
           <p>
-            Enviamos un enlace de verificación a{' '}
-            <span className="codigo">{creada.usuario.correo}</span>. Válido por 24 horas.
+            Tu cuenta <span className="codigo">{creada.usuario.correo}</span> ya está activa en el
+            sistema.
           </p>
-          <div className="aviso aviso--info">
-            En la primera entrega no se envían correos: abre el enlace de prueba para activar la
-            cuenta. <Link to={creada.enlacePrueba}>Activar mi cuenta</Link>
+          <div className="fila-fin acciones-acceso" style={{ marginTop: '1rem' }}>
+            <Link to="/login" className="boton">
+              Ir a iniciar sesión
+            </Link>
           </div>
         </div>
       </div>
@@ -89,8 +97,7 @@ export function RegistroEstudiante() {
       <form className="panel panel-cuerpo" onSubmit={enviar(crear)} noValidate>
         <h1>Crea tu cuenta de estudiante</h1>
         <p className="sub-acceso">
-          Solo se admiten correos {DOMINIO_ESTUDIANTE}. La cuenta se activa con el enlace de
-          verificación.{' '}
+          Solo se admiten correos {DOMINIO_ESTUDIANTE}.{' '}
           <Link to="/registro-encargado">¿Eres personal del almacén? Regístrate aquí.</Link>
         </p>
 
